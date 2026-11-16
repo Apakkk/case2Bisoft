@@ -1,7 +1,8 @@
 # Konteyner Detention Risk Analizi
 
-Hat şirketleri, sürücüler ve depolardan gelen yapılandırılmamış operasyon mesajlarını okuyarak her konteyner
-için detention riskini hesaplayan bir sistemdir.
+Hat şirketleri, sürücüler ve depolardan gelen yapılandırılmamış operasyon mesajlarını okuyup konteyner
+başına detention riskini hesaplar. Yerel dil modeli mesajlardan yapılandırılmış bilgi çıkarır; tarih ve ücret
+hesabı Python kodunda yapılır. Çalışma sırasında harici bir model API'si kullanılmaz.
 
 ## Tasarım yaklaşımı
 
@@ -9,22 +10,22 @@ Sistem, dil modelinin güçlü olduğu işi kuralların gerektirdiği kesinlikte
 
 - **Model yalnızca okur.** Mesajı bir türe ayırır ve alanları metinde yazıldığı haliyle kopyalar
   ("perşembe", "12 Ekim'e", "USD 150/day"). Tarih aritmetiği, gün sayımı ve ücret hesabı yapmaz.
-- **Hesaplamanın tamamı deterministik koddadır.** Aynı girdi her zaman aynı sonucu üretir ve her kural ayrı
-  ayrı test edilir. Yeni bir kural eklemek modele dokunmayı gerektirmez.
+- **Hesaplamanın tamamı deterministik koddadır.** Aynı mesajlar ve aynı hesap tarihi aynı hesabı üretir;
+  kurallar kodda ayrı ayrı test edilir. Yeni bir hesaplama kuralı eklemek modele dokunmayı gerektirmez.
 - **Belirsizlik tahminle doldurulmaz.** Kesin tarihe çevrilemeyen bir ifade ("haftaya bir ara") "bilinmiyor"
   olarak işaretlenir.
 - **Hata güvenli tarafa düşer.** Model çıktısı doğrulanamazsa kayıt yanlış bir değer üretmek yerine
   "Manuel inceleme" olarak raporlanır.
 
-## Mimari
+## Uçtan uca akış
 
 ```
-mesaj ─► Dil modeli: mesaj türü + alanların metindeki hali
-      ─► Doğrulama: JSON şeması (kısıtlı üretim) → Pydantic → metne karşı anlam kontrolü
-         doğrulanamazsa hata geri bildirimiyle 1 yeniden deneme → yine olmazsa "Manuel inceleme"
-      ─► Alan bazlı birleştirme (her alanın kaynak mesajı korunur)
-      ─► Durum: GATED_OUT / AT_TERMINAL / UNKNOWN_STATUS
-      ─► Deterministik katman: tarih çözümleme → ücret → risk → uyarı metni
+mesaj ─► Yerel LLM: sınıflandırma + metinden ham alanları çıkarma
+      ─► JSON Schema/grammar → Pydantic → kanıt ve anlam kontrolleri
+      ─► Hatalıysa geri bildirimle bir kez yeniden deneme; yine başarısızsa manuel inceleme
+      ─► Konteyner başına, alan bazında birleştirme ve kaynak mesaj takibi
+      ─► Durum değerlendirmesi: gate-out / açıkça terminalde / bilinmeyen
+      ─► Deterministik tarih çözümü → serbest süre → detention ücreti → risk ve uyarı
 ```
 
 ## Deterministik kodda kalan kararlar
@@ -35,19 +36,20 @@ mesaj ─► Dil modeli: mesaj türü + alanların metindeki hali
 | Tarih çözümleme | Türkçe ve İngilizce açık/göreli tarihler; ISO hafta kuralları ve çözüm izi | `dates.py` |
 | Serbest süre | Gate-out'un ertesi günü başlar; iş günü ise hafta sonları atlanır, aksi halde takvim günü sayılır | `calc.py` |
 | Detention ücreti | Son serbest günden sonraki günden iade günü dahil; kademeli tarifeler desteklenir | `calc.py` |
-| Çelişkili bilgi | Aynı konteyner için en son tarihli mesaj geçerlidir; geçersiz kılınan mesajlar gerekçede belirtilir | `merge.py` |
+| Çelişkili bilgi | Alanlar ayrı ayrı birleştirilir; her alanda en son açık bilgi geçerlidir. Eşit tarihte girdi sırası kullanılır | `merge.py` |
 | Kapsam | Terminalden çıkmamış konteyner detention kapsamı dışındadır (demurrage); konteynerle ilgisi olmayan mesajlar atlanır | `merge.py` |
 | Risk seviyesi | Yüksek / Orta / Düşük / Belirsiz eşikleri | `calc.py` |
-| Uyarı metni | Şablondan üretilir (en fazla iki cümle); modelin uydurma bir rakam yazma olasılığı yoktur | `merge.py` |
+| Uyarı metni | Kod şablonundan üretilir (en fazla iki cümle); ücret hesabı raporda yeniden yapılmaz | `merge.py` |
 
 ## Model çıktısının güvencesi
 
-1. **Kısıtlı üretim:** Pydantic şeması `response_format: json_schema` ile llama.cpp'ye verilir; sunucu şemadan
-   bir grammar türetir ve şemaya uymayan token'ları üretim sırasında maskeler. Geçersiz JSON üretilemez.
+1. **Kısıtlı üretim:** Pydantic şeması `response_format: json_schema` ile llama.cpp'ye verilir; destekleyen
+   sunucu şemadan grammar türetip uyumsuz token'ları üretim sırasında kısıtlar. Bu, biçim hatalarını azaltır;
+   semantik doğruluk garantisi değildir.
 2. **Tip doğrulaması:** Pydantic (`extra="forbid"`; tüm alanlar zorunlu, bilinmeyen değer için açıkça `null`).
-3. **Anlam kontrolü:** Her değer mesaj metnine karşı denetlenir: alıntılar ve tarih ifadeleri metinde geçmeli,
-   ücret ve gün sayıları metinde bulunmalı, konteyner numarası regex sonucuyla eşleşmeli, sınıf metindeki
-   kanıtla tutarlı olmalıdır.
+3. **Anlam kontrolü:** Sınıflandırma kanıtı ve tarih ifadeleri mesajda aranır; konteyner numarası mesajdan
+   bulunan numarayla karşılaştırılır; ücret ve gün sayılarının mesajda bulunması denetlenir. Bu kontroller
+   yanlış ilişkilendirmelerin tümünü kanıtlayamaz; doğrulanamayan çıktılar reddedilir.
 4. **Yeniden deneme:** Reddedilen çıktının sebebi modele geri bildirilir; ikinci deneme de başarısız olursa
    kayıt manuel incelemeye düşer.
 
@@ -75,9 +77,9 @@ Metal GPU, düşünme (thinking) modu kapalı, temperature 0.
 | Gemma 4 E4B-it Q4_K_M | 5,41 GB | %85,6 | 5 | 6/6 | 8,6 |
 | Gemma 4 E2B-it Q4_K_M | 3,46 GB | %80,0 | 7 | 4/6 | 4,6 |
 
-Doğrulama kurallarındaki son iyileştirmelerin ardından seçilen modelle aynı veri seti üzerinde alan doğruluğu
-%94,7'ye yükselmiş, manuel incelemeye düşen kayıt sayısı 1'e inmiştir.
- Veri seti `bench/dataset.py`, ham sonuçlar `bench/results/`.
+Doğrulama kurallarındaki sonraki bir çalıştırmada seçilen model için aynı veri setinde %94,7 alan doğruluğu ve
+1 manuel inceleme kaydedilmiştir. Bunlar küçük, varyasyonları bağımsız olmayan veri kümesinin ölçümüdür;
+genel saha başarısı olarak yorumlanmamalıdır. Veri seti `bench/dataset.py`, ham sonuçlar `bench/results/`.
 
 ## Kurulum
 
@@ -134,7 +136,7 @@ Fatura bildirimi içeren mesaj, konteynerle ilgisi olmadığı için raporda "at
 ## Testler
 
 ```bash
-uv run pytest -q          # 84 test, model gerektirmez
+uv run pytest -q          # birim ve gold senaryosu testleri; model gerektirmez
 uv run pytest -m live -q  # gerçek modelle uçtan uca testler (sunucu açıkken)
 ```
 
@@ -145,13 +147,15 @@ uv run pytest -m live -q  # gerçek modelle uçtan uca testler (sunucu açıkken
 - Her seçilen alanın mesaj kimliği gerekçede veya kaynak mesajlar listesinde yer alır. Önceki iade
   bildirimleri korunur ve yeni bildirimle geçersiz kılındıkları gerekçede gösterilir. Eşit mesaj tarihlerinde
   girdi sırası kullanılır; sonraki satır önceliklidir.
-- Modelin kısa `kanit` alıntısı orijinal metinde aranır. Konteyner numarası metinden deterministik
-  çıkarılıp normalize edilmiş değerle karşılaştırılır; tarih ham ifade olarak kalır ve `dates.py` çözer.
+- Modelin kısa `kanit` alıntısı orijinal metinde aranır; bu alıntı mesaj türünü destekler. Konteyner
+  numarası metinden deterministik çıkarılıp normalize edilmiş değerle karşılaştırılır; tarih ham ifade
+  olarak kalır ve `dates.py` çözer.
   Sayıların mesajda bulunması doğrulanır. JSON Schema yalnızca biçimi, Pydantic ise biçim ve tipleri garanti
   eder; doğru anlamı tek başına garanti etmez. Anlam kontrolleri bunu ek olarak denetler.
-- `GATED_OUT` için gate-out bildirimi gerekir. `AT_TERMINAL` yalnızca açıkça terminalde olduğu bildirilen
-  konteynerdir ve detention kapsamı dışıdır. Durum mesajı yoksa `UNKNOWN_STATUS` olur ve manuel incelemeye
-  gider; iade planı tek başına gate-out sayılmaz.
+- Gate-out mesajı varsa konteyner detention değerlendirmesine alınır. `terminalde_bekliyor` açıkça
+  bildirildiyse detention kapsamı dışı raporlanır. Bu iki durumdan hiçbiri yoksa `UNKNOWN_STATUS` olur ve
+  manuel incelemeye gider; iade planı tek başına gate-out sayılmaz. Bunlar ayrı enum değerleri değil, mevcut
+  mesaj türlerinden türetilen durum yorumlarıdır.
 - Manuel inceleme gerekçeleri şu anda açıklayıcı metinle raporlanır: eksik gate-out, bilinmeyen durum,
   çözülemeyen tarih, çıkarım doğrulama hatası veya geçersiz konteyner numarası. Ayrı standart neden kodları
   ve model destekli tarih yedek çözümlemesi henüz uygulanmadı.
