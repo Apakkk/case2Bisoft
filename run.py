@@ -122,7 +122,10 @@ def main() -> None:
 
     format_ = konteyner_formati_sor(args.konteyner_formati)
     mesajlar = mesajlari_yukle(args.mesajlar)
-    as_of = args.as_of or varsayilan_as_of(mesajlar)
+    # Canlı operasyonda bugünün tarihi gerekir; offline/altın senaryoları ise
+    # mesaj kümesinin tarihiyle tekrarlanabilir kalır.
+    as_of = args.as_of or (date.today() if not (args.offline or args.altin)
+                           else varsayilan_as_of(mesajlar))
 
     if args.altin:
         mod, sonuclar = "altın (modelsiz)", altin_cikarim(mesajlar)

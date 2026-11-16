@@ -20,7 +20,7 @@ from datetime import date, timedelta
 
 from .calc import Kademe, detention_gun_sayisi, kademeli_ucret, risk_seviyesi, son_serbest_gun
 from .container import konteyner_bul, konteyner_dogrula
-from .dates import _AYNI_GUN_RE, TarihHatasi, tarih_coz
+from .dates import _AYNI_GUN_RE, TarihHatasi, tarih_coz, tarih_coz_detay
 from .schema import CikarimSonucu, MesajCikarimi, SonucSatiri
 
 _GUN_KISA = ["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"]
@@ -32,6 +32,16 @@ def tarih_yaz(d: date | None) -> str:
 
 def _kisa(d: date) -> str:
     return f"{d:%d.%m}"
+
+
+def _tarih_izi(ifade: str, referans: date) -> str:
+    """Göreli tarih çözümünün girdisini, referansını, sonucunu ve kuralını raporlar."""
+    try:
+        z = tarih_coz_detay(ifade, referans)
+    except TarihHatasi:
+        return ""
+    return (f" [tarih izi: '{z.ifade}', referans {z.referans.isoformat()} → "
+            f"{z.tarih.isoformat()} ({z.kural})]")
 
 
 @dataclass
@@ -136,7 +146,8 @@ def _konteyner_satiri(no: str, g: _Grup, konteyner_formati: str, as_of: date) ->
                        if k.c.mesaj_tipi in ("gate_out_bildirimi", "terminalde_bekliyor")]
     durum = _en_son(durum_kayitlari)
     if durum is None:
-        return _manuel(no, "gate-out bilgisi yok, serbest süre hesaplanamaz", kaynak)
+        return _manuel(no, "UNKNOWN_STATUS: terminalden çıkış durumu bilinmiyor; gate-out bilgisi yok",
+                       kaynak, kisa="terminalden çıkış durumu bilinmiyor")
 
     if durum.c.mesaj_tipi == "terminalde_bekliyor":
         return SonucSatiri(
@@ -178,7 +189,8 @@ def _konteyner_satiri(no: str, g: _Grup, konteyner_formati: str, as_of: date) ->
     tip_metni = {"is_gunu": "iş günü", "takvim": "takvim günü"}.get(
         str(tip), "gün (tip belirtilmemiş → kural gereği takvim günü)")
     gerekce = [f"Gate-out {tarih_yaz(gate_out)} ({gate_k.id}), {serbest} {tip_metni} "
-               f"→ son serbest gün {tarih_yaz(son_serbest)}."]
+               f"→ son serbest gün {tarih_yaz(son_serbest)}."
+               + _tarih_izi(str(gate_ifade), gate_k.tarih)]
     kademeler = [Kademe(k.gun_sayisi, k.usd_gunluk) for k in (kademeler_ham or [])]
     gunluk_ilk = kademeler[0].usd_gunluk if kademeler else None
 
@@ -225,7 +237,8 @@ def _konteyner_satiri(no: str, g: _Grup, konteyner_formati: str, as_of: date) ->
         cozum += " → mesajdaki tarihe atıf" if _AYNI_GUN_RE.search(iade_k.c.iade_ifadesi.lower()) else ""
     if iade_k.c.iade_kesinligi == "goreli_gun" and not _AYNI_GUN_RE.search(iade_k.c.iade_ifadesi.lower()):
         cozum += f", mesaj tarihine ({tarih_yaz(iade_k.tarih)}) göre sonraki ilk gün"
-    gerekce.append(f"İade {tarih_yaz(iade)} ({iade_k.id}: {cozum}).{ezilen}")
+    gerekce.append(f"İade {tarih_yaz(iade)} ({iade_k.id}: {cozum})."
+                   + _tarih_izi(str(iade_k.c.iade_ifadesi), iade_k.tarih) + ezilen)
 
     gun = detention_gun_sayisi(son_serbest, iade)
     if gun > 0 and not kademeler:

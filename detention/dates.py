@@ -11,10 +11,13 @@ Varsayımlar (README'de de yazılı):
   bir sonraki haftanın perşembesi seçilir.
 - Tarih ile gün adı birlikte yazılmışsa ("9 Ekim Cuma") tutarlılık kontrol edilir; tutmazsa hata.
 - "haftaya bir ara", "en kısa sürede" gibi ifadeler tarih DEĞİLDİR: hata fırlatılır, tahmin edilmez.
+- "gelecek hafta" Pazartesi-Pazar takvim haftasına; "haftaya perşembe" o haftanın Perşembesine çözülür.
 """
 from __future__ import annotations
 
 import re
+import unicodedata
+from dataclasses import dataclass
 from datetime import date, timedelta
 
 
@@ -52,6 +55,106 @@ _GUN_AY = re.compile(rf"\b(\d{{1,2}})(?:st|nd|rd|th)?[\s.\-]*({_AY_RE}){_EK}\.?(
 _AY_GUN = re.compile(rf"\b({_AY_RE}){_EK}\.?\s+(\d{{1,2}})(?:st|nd|rd|th)?\b(?:,?\s+(\d{{4}}))?")
 _GUN_ADI = re.compile(rf"\b({_GUN_RE})")
 _GORELI_RE = re.compile(r"\b(" + "|".join(_GORELI) + r")\b")
+_HAFTAYA = re.compile(r"\b(?:haftaya|gelecek\s+hafta|next\s+week)\b")
+
+
+@dataclass(frozen=True)
+class TarihCozumu:
+    """Orijinal ifade, mesaj referansı, sonuç ve kullanılan deterministik kural."""
+    ifade: str
+    referans: date
+    tarih: date
+    kural: str
+
+
+_GUN_KODU = {"pazartesi": 0, "sali": 1, "carsamba": 2, "persembe": 3, "cuma": 4,
+             "cumartesi": 5, "pazar": 6, "monday": 0, "tuesday": 1, "wednesday": 2,
+             "thursday": 3, "friday": 4, "saturday": 5, "sunday": 6}
+
+
+def _anahtar(metin: str) -> str:
+    s = unicodedata.normalize("NFKD", metin.replace("İ", "i").replace("ı", "i").lower())
+    return "".join(c for c in s if not unicodedata.combining(c))
+
+
+def _hafta_baslangici(d: date) -> date:
+    return d - timedelta(days=d.weekday())
+
+
+def _adet(s: str) -> int:
+    sayilar = {"bir": 1, "iki": 2, "uc": 3, "dort": 4, "bes": 5, "alti": 6,
+               "yedi": 7, "sekiz": 8, "dokuz": 9, "on": 10}
+    return int(s) if s.isdigit() else sayilar[s]
+
+
+def tarih_coz_detay(ifade: str, referans: date) -> TarihCozumu:
+    """Çözer ve izlenebilir çözüm bilgisini döndürür; belirsizlikte hata verir."""
+    s = " ".join(_anahtar(ifade).replace("'", " ").split())
+    def sonuc(d: date, kural: str) -> TarihCozumu:
+        return TarihCozumu(ifade, referans, d, kural)
+
+    gunler = "|".join(sorted(_GUN_KODU, key=len, reverse=True))
+    sabit = {"bugun": (0, "bugün"), "today": (0, "today"), "yarin": (1, "yarın"),
+             "tomorrow": (1, "tomorrow"), "obur gun": (2, "öbür gün"),
+             "the day after tomorrow": (2, "day after tomorrow"), "dun": (-1, "dün"),
+             "yesterday": (-1, "yesterday"), "onceki gun": (-2, "önceki gün"),
+             "day before yesterday": (-2, "day before yesterday")}
+    if s in sabit:
+        n, rule = sabit[s]
+        return sonuc(referans + timedelta(days=n), rule)
+    m = re.fullmatch(r"(\d+|bir|iki|uc|dort|bes|alti|yedi|sekiz|dokuz|on) gun sonra|in (\d+) days?", s)
+    if m:
+        n = _adet(m[1] or m[2]); return sonuc(referans + timedelta(days=n), f"+{n} gün")
+    m = re.fullmatch(r"(\d+|bir|iki|uc|dort|bes|alti|yedi|sekiz|dokuz|on) gun once|(\d+) days? ago", s)
+    if m:
+        n = _adet(m[1] or m[2]); return sonuc(referans - timedelta(days=n), f"-{n} gün")
+
+    if s in ("haftaya bugun", "a week from today"):
+        return sonuc(referans + timedelta(days=7), "+7 gün")
+    if s == "two weeks from today": return sonuc(referans + timedelta(days=14), "+14 gün")
+    if s in ("iki hafta sonra bugun", "two weeks from today"):
+        return sonuc(referans + timedelta(days=14), "+14 gün")
+    m = re.fullmatch(r"iki hafta sonra (.+)", s)
+    if m and m[1] in _GUN_KODU:
+        return sonuc(_hafta_baslangici(referans) + timedelta(days=14 + _GUN_KODU[m[1]]), "iki hafta sonrası ISO haftasının günü")
+
+    if s in ("ayin son gunu", "last day of this month"):
+        return sonuc(date(referans.year + (referans.month == 12), referans.month % 12 + 1, 1) - timedelta(days=1), "ayın son günü")
+    if s == "gelecek ayin 5 i":
+        y, mo = (referans.year + 1, 1) if referans.month == 12 else (referans.year, referans.month + 1)
+        return sonuc(date(y, mo, 5), "gelecek ayın 5'i")
+    if s in ("end of next week", "gelecek haftanin sonu"):
+        return sonuc(_hafta_baslangici(referans) + timedelta(days=13), "gelecek ISO haftasının pazarı")
+    if s in ("next weekend", "onumuzdeki hafta sonu"):
+        return sonuc(_hafta_baslangici(referans) + timedelta(days=12), "gelecek ISO haftasının cumartesisi")
+
+    for prefix in ("bu hafta ", "this "):
+        if s.startswith(prefix) and s[len(prefix):] in _GUN_KODU:
+            d = _hafta_baslangici(referans) + timedelta(days=_GUN_KODU[s[len(prefix):]])
+            return sonuc(d, "bu ISO haftasının günü")
+    for prefix in ("haftaya ", "gelecek hafta ", "onumuzdeki hafta ", "next week "):
+        if s.startswith(prefix) and s[len(prefix):] in _GUN_KODU:
+            d = _hafta_baslangici(referans) + timedelta(days=7 + _GUN_KODU[s[len(prefix):]])
+            return sonuc(d, "gelecek ISO haftasının günü")
+    m = re.fullmatch(rf"({gunler}) next week", s)
+    if m:
+        return sonuc(_hafta_baslangici(referans) + timedelta(days=7 + _GUN_KODU[m[1]]), "gelecek ISO haftasının günü")
+    m = re.fullmatch(rf"next ({gunler})|onumuzdeki ({gunler})", s)
+    if m:
+        g = m[1] or m[2]
+        return sonuc(_hafta_baslangici(referans) + timedelta(days=7 + _GUN_KODU[g]), "gelecek ISO haftasının günü")
+    if s in ("haftaya", "gelecek hafta", "next week", "onumuzdeki hafta"):
+        if s != "haftaya":
+            return sonuc(_hafta_baslangici(referans) + timedelta(days=7), "gelecek ISO haftasının pazartesi ankrajı")
+        raise TarihHatasi(f"'{ifade}' gün belirtmiyor")
+    for day in sorted(_GUN_KODU, key=len, reverse=True):
+        if s.startswith(day) and s[len(day):] in ("ye", "ya", "e", "a", "de", "da"):
+            s = day
+            break
+    if s in _GUN_KODU:
+        n = (_GUN_KODU[s] - referans.weekday()) % 7 or 7
+        return sonuc(referans + timedelta(days=n), "sonraki yalın hafta günü")
+    raise TarihHatasi(f"'{ifade}' desteklenmiyor veya belirsiz")
 
 
 def _kucuk(metin: str) -> str:
@@ -109,6 +212,36 @@ def tarih_coz(ifade: str | None, referans: date, baglam: str | None = None) -> d
     if not ifade or not ifade.strip():
         raise TarihHatasi("tarih ifadesi boş")
     s = _kucuk(ifade)
+
+    # Göreli gün ifadeleri ayrı kurallarla çözülür ve aynı kurallar çözüm izini de sağlar.
+    if not _AYNI_GUN_RE.search(s) and re.search(r"today|tomorrow|yesterday|day|days|week|hafta|bugun|yarin|dun|onceki|obur|pazartesi|sali|carsamba|persembe|cuma|cumartesi|pazar|monday|tuesday|wednesday|thursday|friday|saturday|sunday|weekend|haftaya|ayin son|gelecek ay", _anahtar(s)):
+        try:
+            return tarih_coz_detay(ifade, referans).tarih
+        except TarihHatasi:
+            # Tarih + haftanın günü gibi mevcut birleşik biçimler aşağıda denetlenir.
+            if not (re.search(r"\d", s) and _GUN_ADI.search(s)):
+                raise
+
+    # "Gelecek hafta" takvim haftasıdır (Pazartesi–Pazar), bugünden 7 gün sonrası değil.
+    # Hafta kaydırıcısı varsa gün adı/o gün/belirli gün ifadesi bu haftaya taşınır.
+    hafta = _HAFTAYA.search(s)
+    if hafta:
+        pazartesi = referans - timedelta(days=referans.weekday()) + timedelta(days=7)
+        if s.strip() == "haftaya":
+            raise TarihHatasi(f"'{ifade}' hangi gün olduğu belirtilmemiş")
+        kalan = s[:hafta.start()] + " " + s[hafta.end():]
+        kalan = kalan.strip(" ,")
+        if not kalan or re.fullmatch(r"(?:bu\s+)?hafta", kalan):
+            return pazartesi
+        if m := _GUN_ADI.search(kalan):
+            return pazartesi + timedelta(days=_GUNLER[m[1]])
+        if _GORELI_RE.search(kalan):
+            rel = _GORELI_RE.search(kalan)
+            return pazartesi + timedelta(days=_GORELI[rel[1]])
+        # "gelecek hafta 12 Ekim" gibi açık tarihlerde, tarihin haftasını koru.
+        if d := tarihleri_bul(kalan, referans):
+            return d[0]
+        raise TarihHatasi(f"'{ifade}' gelecek haftanın gününe çözülemedi")
 
     if _AYNI_GUN_RE.search(s) and not re.search(r"\d", s):
         adaylar = tarihleri_bul(baglam or "", referans)

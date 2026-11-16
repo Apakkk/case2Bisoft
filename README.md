@@ -1,8 +1,7 @@
-# Konteyner Detention Risk Analizi (Lokal LLM)
+# Konteyner Detention Risk Analizi
 
 Hat şirketleri, sürücüler ve depolardan gelen yapılandırılmamış operasyon mesajlarını okuyarak her konteyner
-için detention (gecikme) riskini hesaplayan bir sistemdir. Dil modeli Hugging Face'ten indirilip tamamen yerel
-olarak çalıştırılır; harici bir API kullanılmaz.
+için detention riskini hesaplayan bir sistemdir.
 
 ## Tasarım yaklaşımı
 
@@ -23,7 +22,9 @@ Sistem, dil modelinin güçlü olduğu işi kuralların gerektirdiği kesinlikte
 mesaj ─► Dil modeli: mesaj türü + alanların metindeki hali
       ─► Doğrulama: JSON şeması (kısıtlı üretim) → Pydantic → metne karşı anlam kontrolü
          doğrulanamazsa hata geri bildirimiyle 1 yeniden deneme → yine olmazsa "Manuel inceleme"
-      ─► Deterministik katman: konteyner no → tarih çözümleme → birleştirme → ücret → risk → uyarı metni
+      ─► Alan bazlı birleştirme (her alanın kaynak mesajı korunur)
+      ─► Durum: GATED_OUT / AT_TERMINAL / UNKNOWN_STATUS
+      ─► Deterministik katman: tarih çözümleme → ücret → risk → uyarı metni
 ```
 
 ## Deterministik kodda kalan kararlar
@@ -31,7 +32,7 @@ mesaj ─► Dil modeli: mesaj türü + alanların metindeki hali
 | Karar | Uygulama | Modül |
 |---|---|---|
 | Konteyner numarası | Regex ile `XXXX1234567` biçimine normalizasyon ("MSCU 482915-3" dahil); seçilebilir doğrulama: `basit` veya ISO 6346 kontrol hanesi. Numara hiçbir zaman otomatik düzeltilmez | `container.py` |
-| Tarih çözümleme | Türkçe ve İngilizce ay/gün adları, Türkçe ekler, sayısal tarihler, "yarın", "aynı gün"; göreli ifadeler mesaj tarihine göre çözülür | `dates.py` |
+| Tarih çözümleme | Türkçe ve İngilizce açık/göreli tarihler; ISO hafta kuralları ve çözüm izi | `dates.py` |
 | Serbest süre | Gate-out'un ertesi günü başlar; iş günü ise hafta sonları atlanır, aksi halde takvim günü sayılır | `calc.py` |
 | Detention ücreti | Son serbest günden sonraki günden iade günü dahil; kademeli tarifeler desteklenir | `calc.py` |
 | Çelişkili bilgi | Aynı konteyner için en son tarihli mesaj geçerlidir; geçersiz kılınan mesajlar gerekçede belirtilir | `merge.py` |
@@ -75,8 +76,8 @@ Metal GPU, düşünme (thinking) modu kapalı, temperature 0.
 | Gemma 4 E2B-it Q4_K_M | 3,46 GB | %80,0 | 7 | 4/6 | 4,6 |
 
 Doğrulama kurallarındaki son iyileştirmelerin ardından seçilen modelle aynı veri seti üzerinde alan doğruluğu
-%94,7'ye yükselmiş, manuel incelemeye düşen kayıt sayısı 1'e inmiştir. Örneklem küçük olduğundan bir-iki
-mesajlık farklar anlamlı kabul edilmemelidir. Veri seti `bench/dataset.py`, ham sonuçlar `bench/results/`.
+%94,7'ye yükselmiş, manuel incelemeye düşen kayıt sayısı 1'e inmiştir.
+ Veri seti `bench/dataset.py`, ham sonuçlar `bench/results/`.
 
 ## Kurulum
 
@@ -110,7 +111,9 @@ uv run python run.py --konteyner-formati basit --altin     # modelsiz; yalnızca
 ```
 
 - `--konteyner-formati` (`basit` | `iso6346`) bilinçli olarak varsayılansız bırakılmıştır; verilmezse sorulur.
-- `--as-of` verilmezse hesap tarihi en son mesajın tarihidir; canlı kullanımda güncel tarih verilmelidir.
+- `--as-of` verilmezse canlı kullanım bugünün tarihini, `--offline` ve `--altin` ise veri kümesinin
+  en son mesaj tarihini kullanır. Tekrarlanabilir çalıştırmalar için tarihi açıkça `--as-of YYYY-MM-DD`
+  ile verin; seçilen tarih JSON metadata'sına yazılır.
 - Çıktılar: konsol tablosu, gerekçeler ve uyarılar; ayrıca `out/results.json` ve `out/results.csv`.
 
 ## Örnek çıktı
@@ -135,9 +138,57 @@ uv run pytest -q          # 84 test, model gerektirmez
 uv run pytest -m live -q  # gerçek modelle uçtan uca testler (sunucu açıkken)
 ```
 
+## Birleştirme, kanıt ve durum
+
+- Mesajlar konteyner başına alan bazında birleştirilir. Gate-out tarihi, serbest süre türü/sayısı ve ücret
+  kademeleri ayrı ayrı en son açık değerden alınır; iade planı bunlardan bağımsız güncellenir.
+- Her seçilen alanın mesaj kimliği gerekçede veya kaynak mesajlar listesinde yer alır. Önceki iade
+  bildirimleri korunur ve yeni bildirimle geçersiz kılındıkları gerekçede gösterilir. Eşit mesaj tarihlerinde
+  girdi sırası kullanılır; sonraki satır önceliklidir.
+- Modelin kısa `kanit` alıntısı orijinal metinde aranır. Konteyner numarası metinden deterministik
+  çıkarılıp normalize edilmiş değerle karşılaştırılır; tarih ham ifade olarak kalır ve `dates.py` çözer.
+  Sayıların mesajda bulunması doğrulanır. JSON Schema yalnızca biçimi, Pydantic ise biçim ve tipleri garanti
+  eder; doğru anlamı tek başına garanti etmez. Anlam kontrolleri bunu ek olarak denetler.
+- `GATED_OUT` için gate-out bildirimi gerekir. `AT_TERMINAL` yalnızca açıkça terminalde olduğu bildirilen
+  konteynerdir ve detention kapsamı dışıdır. Durum mesajı yoksa `UNKNOWN_STATUS` olur ve manuel incelemeye
+  gider; iade planı tek başına gate-out sayılmaz.
+- Manuel inceleme gerekçeleri şu anda açıklayıcı metinle raporlanır: eksik gate-out, bilinmeyen durum,
+  çözülemeyen tarih, çıkarım doğrulama hatası veya geçersiz konteyner numarası. Ayrı standart neden kodları
+  ve model destekli tarih yedek çözümlemesi henüz uygulanmadı.
+
+## Göreli tarih çözümleme
+
+`dates.py` önce açıkça tanımlı deterministik kuralları uygular; LLM yalnızca mesajdaki ham ifadeyi çıkarır.
+`tarih_coz_detay` orijinal ifadeyi, mesaj tarihini referans olarak, çözümlenen tarihi ve kullanılan kuralı
+taşır. Rapor gerekçesine göreli tarih için bu iz eklenir. Tarih hesabında sistem saati kullanılmaz.
+
+- Türkçe: bugün, yarın, öbür gün, dün, önceki gün, `N gün sonra/önce`, bu hafta + gün adı, haftaya bugün,
+  haftaya/gelecek hafta/önümüzdeki hafta + gün adı, iki hafta sonra bugün/gün adı, gelecek ayın 5'i,
+  ayın son günü ve önümüzdeki hafta sonu.
+- İngilizce: today, tomorrow, the day after tomorrow, yesterday, `in N days`, `N days ago`, next + weekday,
+  weekday next week, this + weekday, a week from today, two weeks from today, end of next week ve next weekend.
+- ISO haftası Pazartesi başlar. Yalın `Perşembe`, referans tarihinden sonraki ilk Perşembe olur (referans
+  zaten Perşembe ise sonraki haftaya geçer). `Haftaya Perşembe` gelecek ISO haftasındaki Perşembe;
+  `Haftaya bugün` ise referans tarihinden tam 7 gün sonrasıdır.
+- `haftaya bir ara`, `sometime next week` ve tanınmayan biçimler tahmin edilmez; tarih manuel incelemede
+  bilinmiyor kalır. Yalın `haftaya` gün belirtmediği için belirsizdir.
+- Girdi şeması mesaj tarihini saat dilimi olmayan `date` olarak tutar. Saat dilimli kaynak timestamp'i varsa
+  onu mesajın yerel takvim tarihine dönüştürüp bu alana vermek gerekir; bu projede kaynak timestamp'i veya
+  saat dilimi bilgisi bulunmadığından saat dilimi dönüşümü yapılmaz.
+
+## Benchmark ve kapsam
+
+`bench/dataset.json` 40 etiketli örnek içerir: 13 case mesajı, 7 yoklama ve 20 varyasyon. Varyasyonlar
+bağımsız saha verisi değildir ve orijinal kalıplara benzer; bu nedenle mevcut doğruluk sonuçları
+genellenebilir performans iddiası olarak okunmamalıdır. Şu an benchmark tüm örneklerde alan doğruluğu,
+mesaj tipi, iade tarihi, şema geçerliliği, manuel inceleme ve 13 mesajlık case uçtan uca sonucunu raporlar.
+Kaynak/grup bazlı ayrılmış bağımsız test kümesi ve container ID, gate-out, free time, detention rate,
+false negative gibi ayrı metrikler henüz eklenmedi. Önceden kaydedilmiş sonuç dosyaları değiştirilmemiştir.
+
 ## Varsayımlar ve sınırlamalar
 
-- Gün adı ("perşembe") mesaj tarihinden sonraki ilk o güne çözülür; yıl belirtilmemişse mesajın yılı alınır;
+- Gün adı ("perşembe") mesaj tarihinden sonraki ilk o güne çözülür; hafta kaydırıcısı gelecek takvim
+  haftasını belirtir; yıl belirtilmemişse mesajın yılı alınır;
   sayısal tarihler gün/ay sırasıyla okunur; "aynı gün" mesajda geçen tek tarihe bağlanır.
 - İş günü hesabında yalnızca hafta sonları atlanır; resmi tatiller dikkate alınmaz.
 - Model "boşaltma" bildirimlerini ilk denemede gate-out olarak sınıflandırma eğilimindedir; anlam kontrolü bunu

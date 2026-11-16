@@ -6,6 +6,7 @@ import pytest
 from detention.calc import Kademe, detention_gun_sayisi, kademeli_ucret, risk_seviyesi, son_serbest_gun
 from detention.container import beklenen_kontrol_hanesi, konteyner_bul, konteyner_dogrula, normalize_konteyner
 from detention.dates import TarihHatasi, tarih_coz
+from detention.dates import tarih_coz_detay
 from detention.merge import hesapla
 from detention.schema import CikarimSonucu, MesajCikarimi
 from detention.veri import varsayilan_as_of
@@ -67,9 +68,56 @@ def test_format_zorunlu():
     ("08.10.2026", date(2026, 10, 5), date(2026, 10, 8)),
     ("yarın", date(2026, 10, 5), date(2026, 10, 6)),
     ("5 Ocak", date(2026, 12, 20), date(2027, 1, 5)),        # yıl dönümü
+    ("haftaya bugün", date(2026, 10, 5), date(2026, 10, 12)),
+    ("haftaya perşembe", date(2026, 10, 5), date(2026, 10, 15)),
+    ("gelecek hafta", date(2026, 10, 5), date(2026, 10, 12)),
+    ("next week", date(2026, 10, 5), date(2026, 10, 12)),
 ])
 def test_tarih_coz(ifade, referans, beklenen):
     assert tarih_coz(ifade, referans) == beklenen
+
+
+@pytest.mark.parametrize("ifade, beklenen", [
+    ("haftaya bugün", date(2026, 10, 12)),
+    ("haftaya pazartesi", date(2026, 10, 12)), ("haftaya salı", date(2026, 10, 13)),
+    ("haftaya çarşamba", date(2026, 10, 14)), ("haftaya perşembe", date(2026, 10, 15)),
+    ("haftaya cuma", date(2026, 10, 16)), ("haftaya cumartesi", date(2026, 10, 17)),
+    ("haftaya pazar", date(2026, 10, 18)),
+    ("gelecek hafta cuma", date(2026, 10, 16)), ("önümüzdeki pazartesi", date(2026, 10, 12)),
+    ("iki hafta sonra bugün", date(2026, 10, 19)), ("iki hafta sonra perşembe", date(2026, 10, 22)),
+    ("önümüzdeki hafta sonu", date(2026, 10, 17)), ("next weekend", date(2026, 10, 17)),
+    ("end of next week", date(2026, 10, 18)), ("gelecek ayın 5'i", date(2026, 11, 5)),
+    ("ayın son günü", date(2026, 10, 31)), ("in 3 days", date(2026, 10, 8)),
+    ("5 days ago", date(2026, 9, 30)), ("day before yesterday", date(2026, 10, 3)),
+    ("obur gun", date(2026, 10, 7)), ("önceki gün", date(2026, 10, 3)),
+    ("this Friday", date(2026, 10, 9)), ("Thursday next week", date(2026, 10, 15)),
+    ("next Monday", date(2026, 10, 12)), ("next Thursday", date(2026, 10, 15)),
+])
+def test_gelismis_goreli_tarihler(ifade, beklenen):
+    assert tarih_coz(ifade, date(2026, 10, 5)) == beklenen
+
+
+@pytest.mark.parametrize("ifade, referans, beklenen", [
+    ("Monday", date(2026, 10, 4), date(2026, 10, 5)),  # Pazar -> sonraki Pazartesi
+    ("haftaya cuma", date(2026, 12, 28), date(2027, 1, 8)),  # yıl değişimi
+    ("gelecek ayın 5'i", date(2028, 1, 31), date(2028, 2, 5)),  # artık yıl
+    ("Persembe", date(2026, 10, 5), date(2026, 10, 8)),  # ASCII Türkçe
+    ("önümüzdeki hafta cuma", date(2026, 10, 7), date(2026, 10, 16)),  # ref Çarşamba
+])
+def test_goreli_tarih_sinirlar(ifade, referans, beklenen):
+    assert tarih_coz(ifade, referans) == beklenen
+
+
+@pytest.mark.parametrize("ifade", ["haftaya bir ara", "sometime next week", "yakında", "next quarter"])
+def test_desteklenmeyen_goreli_ifade_tahmin_edilmez(ifade):
+    with pytest.raises(TarihHatasi):
+        tarih_coz(ifade, date(2026, 10, 5))
+
+
+def test_goreli_tarih_cozum_izi_orijinali_ve_referansi_tutar():
+    z = tarih_coz_detay("haftaya perşembe", date(2026, 10, 5))
+    assert (z.ifade, z.referans, z.tarih, z.kural) == (
+        "haftaya perşembe", date(2026, 10, 5), date(2026, 10, 15), "gelecek ISO haftasının günü")
 
 
 @pytest.mark.parametrize("ifade, baglam, beklenen", [
@@ -194,6 +242,33 @@ def test_okunamayan_mesaj_manuel_incelemeye(altin_sonuclar):
     satirlar, _ = hesapla(bozuk, konteyner_formati="basit", as_of=AS_OF)
     maeu = next(s for s in satirlar if s.konteyner_no == "MAEU7731042")
     assert maeu.risk == "Manuel inceleme" and "M10" in maeu.gerekce
+
+
+def test_iade_plani_gate_out_olmayan_konteyneri_unknown_status_yapar(beklenen_cikarim):
+    from detention.schema import Mesaj
+    m = Mesaj(id="U1", tarih=date(2026, 10, 5), gonderen="Depo",
+              metin="ABCU1234567 iade 12 Ekim'e kaldı.")
+    c = dict(beklenen_cikarim["M7"], konteyner_no_ham="ABCU1234567")
+    s = CikarimSonucu(mesaj=m, cikarim=MesajCikarimi.model_validate(c))
+    rows, _ = hesapla([s], konteyner_formati="basit", as_of=AS_OF)
+    assert rows[0].risk == "Manuel inceleme"
+    assert "UNKNOWN_STATUS" in rows[0].gerekce
+
+
+def test_ayni_tarihte_sonraki_girdi_alani_gunceller(altin_sonuclar):
+    """Eşit tarihte girdi sırası tie-break olur; diğer gate alanları korunur."""
+    from detention.schema import Mesaj
+    m = Mesaj(id="M15", tarih=date(2026, 9, 30), gonderen="Hat şirketi",
+              metin="HLCU5520187 gate-out 30/09/2026.")
+    c = dict(altin_sonuclar[2].cikarim.model_dump(), kanit="HLCU5520187 gate-out 30/09/2026",
+             gate_out_ifadesi="30/09/2026", serbest_sure_gun=None, serbest_sure_tipi=None,
+             ucret_kademeleri=[])
+    updated = CikarimSonucu(mesaj=m, cikarim=MesajCikarimi.model_validate(c))
+    rows, _ = hesapla(altin_sonuclar[:3] + [updated] + altin_sonuclar[3:],
+                      konteyner_formati="basit", as_of=AS_OF)
+    hlcu = next(r for r in rows if r.konteyner_no == "HLCU5520187")
+    assert hlcu.son_serbest_gun == date(2026, 10, 7)
+    assert "$760" in hlcu.gerekce
 
 
 # --- Uyarı metni: case "1-2 cümle" istiyor ---------------------------------------------------
