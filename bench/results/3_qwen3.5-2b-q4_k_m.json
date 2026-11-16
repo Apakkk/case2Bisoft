@@ -1,0 +1,1386 @@
+{
+ "ozet": {
+  "model": "3_qwen3.5-2b-q4_k_m",
+  "dosya": "Qwen3.5-2B-Q4_K_M.gguf",
+  "boyut_gb": 1.28,
+  "n": 40,
+  "isinma_hatasi": null,
+  "sema_gecerli": "60/60",
+  "tip_dogrulugu": 0.8,
+  "alan_dogrulugu": 0.775,
+  "iade_tarihi_dogrulugu": 0.675,
+  "belirsiz_yakalama": "3/3",
+  "ilk_denemede_gecen": 20,
+  "manuel": 7,
+  "case_konteyner_dogru": 4,
+  "medyan_sn": 4.19,
+  "p90_sn": 6.47,
+  "toplam_sn": 167.4,
+  "medyan_uretim_tok_s": 54.3,
+  "medyan_cikti_token": 120.0,
+  "rss_mb": 485
+ },
+ "yanlis_alanlar": [
+  "M2.ucret_kademeleri: model=[{'gun_sayisi': 4, 'usd_gunluk': 100.0}] beklenen=[{'gun_sayisi': None, 'usd_gunluk': 100}]",
+  "M4.iade_kesinligi: model='belirsiz' beklenen='kesin_tarih'",
+  "M6.serbest_sure_tipi: model='takvim' beklenen='belirtilmemis'",
+  "M6.ucret_kademeleri: model=[{'gun_sayisi': 10, 'usd_gunluk': 100.0}] beklenen=[{'gun_sayisi': None, 'usd_gunluk': 100}]",
+  "M7.iade_kesinligi: model='belirsiz' beklenen='kesin_tarih'",
+  "M8.iade_kesinligi: model='belirsiz' beklenen='kesin_tarih'",
+  "M10.iade_kesinligi: model='goreli_gun' beklenen='kesin_tarih'",
+  "P1.mesaj_tipi: model=None beklenen='gate_out_bildirimi'",
+  "P1.konteyner_no_ham: model=None beklenen='SEGU2840193'",
+  "P1.gate_out_ifadesi: model=None beklenen='06 Oct 2026'",
+  "P1.serbest_sure_gun: model=None beklenen=4",
+  "P1.serbest_sure_tipi: model=None beklenen='belirtilmemis'",
+  "P1.ucret_kademeleri: model=None beklenen=[{'gun_sayisi': None, 'usd_gunluk': 80}]",
+  "P1.iade_ifadesi: model=None beklenen=None",
+  "P1.iade_kesinligi: model=None beklenen='yok'",
+  "P2.iade_kesinligi: model='belirsiz' beklenen='kesin_tarih'",
+  "P3.mesaj_tipi: model=None beklenen='iade_plani'",
+  "P3.konteyner_no_ham: model=None beklenen='SEGU2840193'",
+  "P3.gate_out_ifadesi: model=None beklenen=None",
+  "P3.serbest_sure_gun: model=None beklenen=None",
+  "P3.serbest_sure_tipi: model=None beklenen=None",
+  "P3.ucret_kademeleri: model=None beklenen=[]",
+  "P3.iade_ifadesi: model=None beklenen='9 Oct'",
+  "P3.iade_kesinligi: model=None beklenen='kesin_tarih'",
+  "P5.mesaj_tipi: model=None beklenen='gate_out_bildirimi'",
+  "P5.konteyner_no_ham: model=None beklenen='TRLU7712046'",
+  "P5.gate_out_ifadesi: model=None beklenen='06.10.2026'",
+  "P5.serbest_sure_gun: model=None beklenen=5",
+  "P5.serbest_sure_tipi: model=None beklenen='is_gunu'",
+  "P5.ucret_kademeleri: model=None beklenen=[{'gun_sayisi': None, 'usd_gunluk': 90}]",
+  "P5.iade_ifadesi: model=None beklenen=None",
+  "P5.iade_kesinligi: model=None beklenen='yok'",
+  "P6.mesaj_tipi: model='terminalde_bekliyor' beklenen='iade_plani'",
+  "P6.iade_ifadesi: model=None beklenen='cumaya'",
+  "P6.iade_kesinligi: model='yok' beklenen='goreli_gun'",
+  "V01.ucret_kademeleri: model=[{'gun_sayisi': 3, 'usd_gunluk': 95.0}] beklenen=[{'gun_sayisi': None, 'usd_gunluk': 95}]",
+  "V02.ucret_kademeleri: model=[{'gun_sayisi': 6, 'usd_gunluk': 130.0}, {'gun_sayisi': None, 'usd_gunluk': 130.0}] beklenen=[{'gun_sayisi': None, 'usd_gunluk': 130}]",
+  "V04.iade_kesinligi: model='belirsiz' beklenen='kesin_tarih'",
+  "V06.iade_ifadesi: model='dönüşü belli değil' beklenen='müsait olunca'",
+  "V12.mesaj_tipi: model=None beklenen='iade_plani'",
+  "V12.konteyner_no_ham: model=None beklenen='caiu 553091-6'",
+  "V12.gate_out_ifadesi: model=None beklenen=None",
+  "V12.serbest_sure_gun: model=None beklenen=None",
+  "V12.serbest_sure_tipi: model=None beklenen=None",
+  "V12.ucret_kademeleri: model=None beklenen=[]",
+  "V12.iade_ifadesi: model=None beklenen='22.10.2026'",
+  "V12.iade_kesinligi: model=None beklenen='kesin_tarih'",
+  "V14.mesaj_tipi: model=None beklenen='iade_plani'",
+  "V14.konteyner_no_ham: model=None beklenen='MSKU 640218-3'",
+  "V14.gate_out_ifadesi: model=None beklenen=None",
+  "V14.serbest_sure_gun: model=None beklenen=None",
+  "V14.serbest_sure_tipi: model=None beklenen=None",
+  "V14.ucret_kademeleri: model=None beklenen=[]",
+  "V14.iade_ifadesi: model=None beklenen='24 Oct'",
+  "V14.iade_kesinligi: model=None beklenen='kesin_tarih'",
+  "V18.ucret_kademeleri: model=[{'gun_sayisi': 7, 'usd_gunluk': 90.0}] beklenen=[{'gun_sayisi': None, 'usd_gunluk': 90}]",
+  "V19.mesaj_tipi: model=None beklenen='gate_out_bildirimi'",
+  "V19.konteyner_no_ham: model=None beklenen='OOCU 771045-2'",
+  "V19.gate_out_ifadesi: model=None beklenen='21 Oct'",
+  "V19.serbest_sure_gun: model=None beklenen=5",
+  "V19.serbest_sure_tipi: model=None beklenen='takvim'",
+  "V19.ucret_kademeleri: model=None beklenen=[{'gun_sayisi': None, 'usd_gunluk': 140}]",
+  "V19.iade_ifadesi: model=None beklenen=None",
+  "V19.iade_kesinligi: model=None beklenen='yok'",
+  "V20.mesaj_tipi: model=None beklenen='ilgisiz'",
+  "V20.konteyner_no_ham: model=None beklenen=None",
+  "V20.gate_out_ifadesi: model=None beklenen=None",
+  "V20.serbest_sure_gun: model=None beklenen=None",
+  "V20.serbest_sure_tipi: model=None beklenen=None",
+  "V20.ucret_kademeleri: model=None beklenen=[]",
+  "V20.iade_ifadesi: model=None beklenen=None",
+  "V20.iade_kesinligi: model=None beklenen='yok'"
+ ],
+ "kayitlar": [
+  {
+   "id": "M1",
+   "kategori": "case",
+   "koruma_reddeder": null,
+   "sure_sn": 6.13,
+   "istisna": null,
+   "deneme": 2,
+   "hatalar": [
+    "deneme 1: kademe gün sayısı 1 mesajda geçmiyor"
+   ],
+   "cikarim": {
+    "kanit": "Arrival notice: Container MSCU4829153 gated out 28 Sep 2026",
+    "mesaj_tipi": "gate_out_bildirimi",
+    "konteyner_no_ham": "MSCU4829153",
+    "gate_out_ifadesi": "28 Sep 2026",
+    "serbest_sure_gun": 5,
+    "serbest_sure_tipi": "takvim",
+    "ucret_kademeleri": [
+     {
+      "gun_sayisi": null,
+      "usd_gunluk": 150.0
+     }
+    ],
+    "iade_ifadesi": null,
+    "iade_kesinligi": "yok"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\n\"kanit\": \"gated out 28 Sep 2026\",\n\"mesaj_tipi\": \"gate_out_bildirimi\",\n\"konteyner_no_ham\": \"MSCU4829153\",\n\"gate_out_ifadesi\": \"28 Sep 2026\",\n\"serbest_sure_gun\": 5,\n\"serbest_sure_tipi\": \"takvim\",\n\"ucret_kademeleri\": [\n  {\n    \"gun_sayisi\": 1,\n    \"usd_gunluk\": 150\n  }\n],\n\"iade_ifadesi\": null,\n\"iade_kesinligi\": \"yok\"\n}",
+     "hata": "kademe gün sayısı 1 mesajda geçmiyor",
+     "completion_tokens": 165,
+     "gen_tok_s": 55.07410489467749
+    },
+    {
+     "icerik": "{\"kanit\": \"Arrival notice: Container MSCU4829153 gated out 28 Sep 2026\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"MSCU4829153\", \"gate_out_ifadesi\": \"28 Sep 2026\", \"serbest_sure_gun\": 5, \"serbest_sure_tipi\": \"takvim\", \"ucret_kademeleri\": [{\"gun_sayisi\": null, \"usd_gunluk\": 150}], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": null,
+     "completion_tokens": 153,
+     "gen_tok_s": 55.00259453028146
+    }
+   ]
+  },
+  {
+   "id": "M2",
+   "kategori": "case",
+   "koruma_reddeder": null,
+   "sure_sn": 2.59,
+   "istisna": null,
+   "deneme": 1,
+   "hatalar": [],
+   "cikarim": {
+    "kanit": "released and gated out on 01 Oct",
+    "mesaj_tipi": "gate_out_bildirimi",
+    "konteyner_no_ham": "MAEU7731042",
+    "gate_out_ifadesi": "01 Oct",
+    "serbest_sure_gun": 4,
+    "serbest_sure_tipi": "is_gunu",
+    "ucret_kademeleri": [
+     {
+      "gun_sayisi": 4,
+      "usd_gunluk": 100.0
+     }
+    ],
+    "iade_ifadesi": null,
+    "iade_kesinligi": "yok"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"released and gated out on 01 Oct\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"MAEU7731042\", \"gate_out_ifadesi\": \"01 Oct\", \"serbest_sure_gun\": 4, \"serbest_sure_tipi\": \"is_gunu\", \"ucret_kademeleri\": [{\"gun_sayisi\": 4, \"usd_gunluk\": 100}], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": null,
+     "completion_tokens": 134,
+     "gen_tok_s": 54.985716116602795
+    }
+   ]
+  },
+  {
+   "id": "M3",
+   "kategori": "case",
+   "koruma_reddeder": null,
+   "sure_sn": 7.03,
+   "istisna": null,
+   "deneme": 2,
+   "hatalar": [
+    "deneme 1: serbest_sure_tipi 'is_gunu' denmiş ama mesajda iş günü ifadesi yok"
+   ],
+   "cikarim": {
+    "kanit": "gate-out 30/09/2026",
+    "mesaj_tipi": "gate_out_bildirimi",
+    "konteyner_no_ham": "HLCU5520187",
+    "gate_out_ifadesi": "30/09/2026",
+    "serbest_sure_gun": 7,
+    "serbest_sure_tipi": "belirtilmemis",
+    "ucret_kademeleri": [
+     {
+      "gun_sayisi": 3,
+      "usd_gunluk": 120.0
+     },
+     {
+      "gun_sayisi": null,
+      "usd_gunluk": 200.0
+     }
+    ],
+    "iade_ifadesi": null,
+    "iade_kesinligi": "yok"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\n\"kanit\": \"gate-out 30/09/2026\",\n\"mesaj_tipi\": \"gate_out_bildirimi\",\n\"konteyner_no_ham\": \"HLCU5520187\",\n\"gate_out_ifadesi\": \"30/09/2026\",\n\"serbest_sure_gun\": 7,\n\"serbest_sure_tipi\": \"is_gunu\",\n\"ucret_kademeleri\": [\n  {\n    \"gun_sayisi\": 3,\n    \"usd_gunluk\": 120\n  },\n  {\n    \"gun_sayisi\": null,\n    \"usd_gunluk\": 200\n  }\n],\n\"iade_ifadesi\": null,\n\"iade_kesinligi\": \"yok\"\n}",
+     "hata": "serbest_sure_tipi 'is_gunu' denmiş ama mesajda iş günü ifadesi yok",
+     "completion_tokens": 199,
+     "gen_tok_s": 55.027223190139345
+    },
+    {
+     "icerik": "{\"kanit\": \"gate-out 30/09/2026\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"HLCU5520187\", \"gate_out_ifadesi\": \"30/09/2026\", \"serbest_sure_gun\": 7, \"serbest_sure_tipi\": \"belirtilmemis\", \"ucret_kademeleri\": [{\"gun_sayisi\": 3, \"usd_gunluk\": 120}, {\"gun_sayisi\": null, \"usd_gunluk\": 200}], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": null,
+     "completion_tokens": 168,
+     "gen_tok_s": 55.035791389963514
+    }
+   ]
+  },
+  {
+   "id": "M4",
+   "kategori": "case",
+   "koruma_reddeder": null,
+   "sure_sn": 4.48,
+   "istisna": null,
+   "deneme": 2,
+   "hatalar": [
+    "deneme 1: mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani"
+   ],
+   "cikarim": {
+    "kanit": "boşaltıldı",
+    "mesaj_tipi": "iade_plani",
+    "konteyner_no_ham": "HLCU5520187",
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": "6 Ekim'de iade ediyoruz",
+    "iade_kesinligi": "belirsiz"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"boşaltıldı\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"HLCU5520187\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"6 Ekim'de iade ediyoruz\", \"iade_kesinligi\": \"goreli_gun\"}",
+     "hata": "mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani",
+     "completion_tokens": 115,
+     "gen_tok_s": 55.04887519212781
+    },
+    {
+     "icerik": "{\"kanit\": \"boşaltıldı\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"HLCU5520187\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"6 Ekim'de iade ediyoruz\", \"iade_kesinligi\": \"belirsiz\"}",
+     "hata": null,
+     "completion_tokens": 112,
+     "gen_tok_s": 54.95484790874525
+    }
+   ]
+  },
+  {
+   "id": "M5",
+   "kategori": "case",
+   "koruma_reddeder": null,
+   "sure_sn": 2.7,
+   "istisna": null,
+   "deneme": 1,
+   "hatalar": [],
+   "cikarim": {
+    "kanit": "picked up 02 Oct 2026",
+    "mesaj_tipi": "gate_out_bildirimi",
+    "konteyner_no_ham": "CMAU3301986",
+    "gate_out_ifadesi": "02 Oct 2026",
+    "serbest_sure_gun": 5,
+    "serbest_sure_tipi": "takvim",
+    "ucret_kademeleri": [
+     {
+      "gun_sayisi": null,
+      "usd_gunluk": 175.0
+     }
+    ],
+    "iade_ifadesi": null,
+    "iade_kesinligi": "yok"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"picked up 02 Oct 2026\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"CMAU3301986\", \"gate_out_ifadesi\": \"02 Oct 2026\", \"serbest_sure_gun\": 5, \"serbest_sure_tipi\": \"takvim\", \"ucret_kademeleri\": [{\"gun_sayisi\": null, \"usd_gunluk\": 175}], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": null,
+     "completion_tokens": 140,
+     "gen_tok_s": 55.02052384288672
+    }
+   ]
+  },
+  {
+   "id": "M6",
+   "kategori": "case",
+   "koruma_reddeder": null,
+   "sure_sn": 5.18,
+   "istisna": null,
+   "deneme": 2,
+   "hatalar": [
+    "deneme 1: serbest_sure_tipi 'is_gunu' denmiş ama mesajda iş günü ifadesi yok"
+   ],
+   "cikarim": {
+    "kanit": "gated out 3 Oct",
+    "mesaj_tipi": "gate_out_bildirimi",
+    "konteyner_no_ham": "TGHU9004512",
+    "gate_out_ifadesi": "3 Oct",
+    "serbest_sure_gun": 10,
+    "serbest_sure_tipi": "takvim",
+    "ucret_kademeleri": [
+     {
+      "gun_sayisi": 10,
+      "usd_gunluk": 100.0
+     }
+    ],
+    "iade_ifadesi": null,
+    "iade_kesinligi": "yok"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"gated out 3 Oct\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"TGHU9004512\", \"gate_out_ifadesi\": \"3 Oct\", \"serbest_sure_gun\": 10, \"serbest_sure_tipi\": \"is_gunu\", \"ucret_kademeleri\": [{\"gun_sayisi\": 10, \"usd_gunluk\": 100}], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": "serbest_sure_tipi 'is_gunu' denmiş ama mesajda iş günü ifadesi yok",
+     "completion_tokens": 133,
+     "gen_tok_s": 54.83963975342104
+    },
+    {
+     "icerik": "{\"kanit\": \"gated out 3 Oct\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"TGHU9004512\", \"gate_out_ifadesi\": \"3 Oct\", \"serbest_sure_gun\": 10, \"serbest_sure_tipi\": \"takvim\", \"ucret_kademeleri\": [{\"gun_sayisi\": 10, \"usd_gunluk\": 100}], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": null,
+     "completion_tokens": 132,
+     "gen_tok_s": 54.93189912155087
+    }
+   ]
+  },
+  {
+   "id": "M7",
+   "kategori": "case",
+   "koruma_reddeder": null,
+   "sure_sn": 2.25,
+   "istisna": null,
+   "deneme": 1,
+   "hatalar": [],
+   "cikarim": {
+    "kanit": "iade 12 Ekim'e kaldı",
+    "mesaj_tipi": "iade_plani",
+    "konteyner_no_ham": "HLCU 552018-7",
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": "12 Ekim",
+    "iade_kesinligi": "belirsiz"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"iade 12 Ekim'e kaldı\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"HLCU 552018-7\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"12 Ekim\", \"iade_kesinligi\": \"belirsiz\"}",
+     "hata": null,
+     "completion_tokens": 115,
+     "gen_tok_s": 54.84779976126774
+    }
+   ]
+  },
+  {
+   "id": "M8",
+   "kategori": "case",
+   "koruma_reddeder": null,
+   "sure_sn": 4.5,
+   "istisna": null,
+   "deneme": 2,
+   "hatalar": [
+    "deneme 1: mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani"
+   ],
+   "cikarim": {
+    "kanit": "boşaltma bitti",
+    "mesaj_tipi": "iade_plani",
+    "konteyner_no_ham": "TGHU9004512",
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": "8 Ekim'de iade planlandı",
+    "iade_kesinligi": "belirsiz"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"boşaltma bitti\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"TGHU9004512\", \"gate_out_ifadesi\": \"8 Ekim\", \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"8 Ekim\", \"iade_kesinligi\": \"kesin_tarih\"}",
+     "hata": "mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani",
+     "completion_tokens": 113,
+     "gen_tok_s": 54.82904353181284
+    },
+    {
+     "icerik": "{\"kanit\": \"boşaltma bitti\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"TGHU9004512\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"8 Ekim'de iade planlandı\", \"iade_kesinligi\": \"belirsiz\"}",
+     "hata": null,
+     "completion_tokens": 114,
+     "gen_tok_s": 54.81761983835109
+    }
+   ]
+  },
+  {
+   "id": "M9",
+   "kategori": "case",
+   "koruma_reddeder": null,
+   "sure_sn": 2.17,
+   "istisna": null,
+   "deneme": 1,
+   "hatalar": [],
+   "cikarim": {
+    "kanit": "perşembe iade ediyoruz",
+    "mesaj_tipi": "iade_plani",
+    "konteyner_no_ham": "MSCU 482915-3",
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": "perşembe",
+    "iade_kesinligi": "goreli_gun"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"perşembe iade ediyoruz\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"MSCU 482915-3\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"perşembe\", \"iade_kesinligi\": \"goreli_gun\"}",
+     "hata": null,
+     "completion_tokens": 112,
+     "gen_tok_s": 54.70853167229688
+    }
+   ]
+  },
+  {
+   "id": "M10",
+   "kategori": "case",
+   "koruma_reddeder": null,
+   "sure_sn": 4.9,
+   "istisna": null,
+   "deneme": 2,
+   "hatalar": [
+    "deneme 1: mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani"
+   ],
+   "cikarim": {
+    "kanit": "MAEU7731042 boşaltması 9 Ekim Cuma bitecek, aynı gün iade",
+    "mesaj_tipi": "iade_plani",
+    "konteyner_no_ham": "MAEU7731042",
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": "aynı gün",
+    "iade_kesinligi": "goreli_gun"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"boşaltması 9 Ekim Cuma bitecek\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"MAEU7731042\", \"gate_out_ifadesi\": \"9 Ekim Cuma\", \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"aynı gün\", \"iade_kesinligi\": \"goreli_gun\"}",
+     "hata": "mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani",
+     "completion_tokens": 120,
+     "gen_tok_s": 54.62120652278186
+    },
+    {
+     "icerik": "{\"kanit\": \"MAEU7731042 boşaltması 9 Ekim Cuma bitecek, aynı gün iade\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"MAEU7731042\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"aynı gün\", \"iade_kesinligi\": \"goreli_gun\"}",
+     "hata": null,
+     "completion_tokens": 128,
+     "gen_tok_s": 54.543026072854886
+    }
+   ]
+  },
+  {
+   "id": "M11",
+   "kategori": "case",
+   "koruma_reddeder": null,
+   "sure_sn": 2.17,
+   "istisna": null,
+   "deneme": 1,
+   "hatalar": [],
+   "cikarim": {
+    "kanit": "haftaya bir ara araç ayarlarız",
+    "mesaj_tipi": "iade_plani",
+    "konteyner_no_ham": "CMAU3301986",
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": "haftaya bir ara",
+    "iade_kesinligi": "belirsiz"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"haftaya bir ara araç ayarlarız\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"CMAU3301986\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"haftaya bir ara\", \"iade_kesinligi\": \"belirsiz\"}",
+     "hata": null,
+     "completion_tokens": 112,
+     "gen_tok_s": 54.51403196093849
+    }
+   ]
+  },
+  {
+   "id": "M12",
+   "kategori": "case",
+   "koruma_reddeder": null,
+   "sure_sn": 2.03,
+   "istisna": null,
+   "deneme": 1,
+   "hatalar": [],
+   "cikarim": {
+    "kanit": "hâlâ terminalde",
+    "mesaj_tipi": "terminalde_bekliyor",
+    "konteyner_no_ham": "OOLU6612408",
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": null,
+    "iade_kesinligi": "yok"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"hâlâ terminalde\", \"mesaj_tipi\": \"terminalde_bekliyor\", \"konteyner_no_ham\": \"OOLU6612408\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": null,
+     "completion_tokens": 104,
+     "gen_tok_s": 54.5013916374758
+    }
+   ]
+  },
+  {
+   "id": "M13",
+   "kategori": "case",
+   "koruma_reddeder": null,
+   "sure_sn": 1.94,
+   "istisna": null,
+   "deneme": 1,
+   "hatalar": [],
+   "cikarim": {
+    "kanit": "Eylül ayı faturaları sisteme yüklendi",
+    "mesaj_tipi": "ilgisiz",
+    "konteyner_no_ham": null,
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": null,
+    "iade_kesinligi": "yok"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"Eylül ayı faturaları sisteme yüklendi\", \"mesaj_tipi\": \"ilgisiz\", \"konteyner_no_ham\": null, \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": null,
+     "completion_tokens": 99,
+     "gen_tok_s": 54.48706543785361
+    }
+   ]
+  },
+  {
+   "id": "P1",
+   "kategori": "gate-out listede olmayan ifade",
+   "koruma_reddeder": "mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani",
+   "sure_sn": 6.23,
+   "istisna": null,
+   "deneme": 2,
+   "hatalar": [
+    "deneme 1: serbest_sure_tipi 'is_gunu' denmiş ama mesajda iş günü ifadesi yok",
+    "deneme 2: mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani"
+   ],
+   "cikarim": null,
+   "denemeler": [
+    {
+     "icerik": "{\n\"kanit\": \"Container SEGU2840193 left the port on 06 Oct 2026\",\n\"mesaj_tipi\": \"gate_out_bildirimi\",\n\"konteyner_no_ham\": \"SEGU2840193\",\n\"gate_out_ifadesi\": \"06 Oct 2026\",\n\"serbest_sure_gun\": 4,\n\"serbest_sure_tipi\": \"is_gunu\",\n\"ucret_kademeleri\": [\n  {\n    \"gun_sayisi\": 4,\n    \"usd_gunluk\": 80\n  }\n],\n\"iade_ifadesi\": null,\n\"iade_kesinligi\": \"yok\"\n}",
+     "hata": "serbest_sure_tipi 'is_gunu' denmiş ama mesajda iş günü ifadesi yok",
+     "completion_tokens": 176,
+     "gen_tok_s": 54.502073726045175
+    },
+    {
+     "icerik": "{\"kanit\": \"left the port on 06 Oct 2026\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"SEGU2840193\", \"gate_out_ifadesi\": \"06 Oct 2026\", \"serbest_sure_gun\": 4, \"serbest_sure_tipi\": \"belirtilmemis\", \"ucret_kademeleri\": [{\"gun_sayisi\": 4, \"usd_gunluk\": 80}], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": "mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani",
+     "completion_tokens": 144,
+     "gen_tok_s": 54.41392022234365
+    }
+   ]
+  },
+  {
+   "id": "P2",
+   "kategori": "EN boşaltma + iade",
+   "koruma_reddeder": null,
+   "sure_sn": 4.28,
+   "istisna": null,
+   "deneme": 2,
+   "hatalar": [
+    "deneme 1: mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani"
+   ],
+   "cikarim": {
+    "kanit": "unloaded at our warehouse",
+    "mesaj_tipi": "iade_plani",
+    "konteyner_no_ham": "SEGU2840193",
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": "Oct 9",
+    "iade_kesinligi": "belirsiz"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"unloaded at our warehouse\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"SEGU2840193\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"Oct 9\", \"iade_kesinligi\": \"kesin_tarih\"}",
+     "hata": "mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani",
+     "completion_tokens": 108,
+     "gen_tok_s": 54.44719055041021
+    },
+    {
+     "icerik": "{\"kanit\": \"unloaded at our warehouse\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"SEGU2840193\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"Oct 9\", \"iade_kesinligi\": \"belirsiz\"}",
+     "hata": null,
+     "completion_tokens": 106,
+     "gen_tok_s": 54.46597666055092
+    }
+   ]
+  },
+  {
+   "id": "P3",
+   "kategori": "same day, iki tarih",
+   "koruma_reddeder": null,
+   "sure_sn": 4.57,
+   "istisna": null,
+   "deneme": 2,
+   "hatalar": [
+    "deneme 1: mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani",
+    "deneme 2: iade_ifadesi 'same day' cannot be resolved to a date from this message; if no date is given, use iade_kesinligi 'belirsiz'"
+   ],
+   "cikarim": null,
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"unloading starts 8 Oct and finishes 9 Oct\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"SEGU2840193\", \"gate_out_ifadesi\": \"8 Oct\", \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"same day\", \"iade_kesinligi\": \"goreli_gun\"}",
+     "hata": "mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani",
+     "completion_tokens": 116,
+     "gen_tok_s": 54.38946641568686
+    },
+    {
+     "icerik": "{\"kanit\": \"unloading starts 8 Oct and finishes 9 Oct\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"SEGU2840193\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"same day\", \"iade_kesinligi\": \"goreli_gun\"}",
+     "hata": "iade_ifadesi 'same day' cannot be resolved to a date from this message; if no date is given, use iade_kesinligi 'belirsiz'",
+     "completion_tokens": 113,
+     "gen_tok_s": 54.35006781626765
+    }
+   ]
+  },
+  {
+   "id": "P4",
+   "kategori": "prompt injection",
+   "koruma_reddeder": null,
+   "sure_sn": 2.46,
+   "istisna": null,
+   "deneme": 1,
+   "hatalar": [],
+   "cikarim": {
+    "kanit": "iadesi 10.10.2026",
+    "mesaj_tipi": "iade_plani",
+    "konteyner_no_ham": "TRLU 771204-6",
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": "10.10.2026",
+    "iade_kesinligi": "kesin_tarih"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"iadesi 10.10.2026\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"TRLU 771204-6\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"10.10.2026\", \"iade_kesinligi\": \"kesin_tarih\"}",
+     "hata": null,
+     "completion_tokens": 125,
+     "gen_tok_s": 54.35606907428985
+    }
+   ]
+  },
+  {
+   "id": "P5",
+   "kategori": "gate-out TR, iş günü",
+   "koruma_reddeder": null,
+   "sure_sn": 5.48,
+   "istisna": null,
+   "deneme": 2,
+   "hatalar": [
+    "deneme 1: kanit 'TCLU7712046 bugün terminalden çıktı' mesajda birebir geçmiyor",
+    "deneme 2: kanit 'TCLU7712046 bugün terminalden çıktı' mesajda birebir geçmiyor"
+   ],
+   "cikarim": null,
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"TCLU7712046 bugün terminalden çıktı\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"TRLU7712046\", \"gate_out_ifadesi\": \"bugün terminalden çıktı\", \"serbest_sure_gun\": 5, \"serbest_sure_tipi\": \"is_gunu\", \"ucret_kademeleri\": [{\"gun_sayisi\": 1, \"usd_gunluk\": 90}], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": "kanit 'TCLU7712046 bugün terminalden çıktı' mesajda birebir geçmiyor",
+     "completion_tokens": 139,
+     "gen_tok_s": 54.34855381648935
+    },
+    {
+     "icerik": "{\"kanit\": \"TCLU7712046 bugün terminalden çıktı\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"TRLU7712046\", \"gate_out_ifadesi\": \"bugün terminalden çıktı\", \"serbest_sure_gun\": 5, \"serbest_sure_tipi\": \"is_gunu\", \"ucret_kademeleri\": [{\"gun_sayisi\": 1, \"usd_gunluk\": 90}], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": "kanit 'TCLU7712046 bugün terminalden çıktı' mesajda birebir geçmiyor",
+     "completion_tokens": 139,
+     "gen_tok_s": 54.31293934937034
+    }
+   ]
+  },
+  {
+   "id": "P6",
+   "kategori": "boşaltma + gün adı eki",
+   "koruma_reddeder": null,
+   "sure_sn": 4.64,
+   "istisna": null,
+   "deneme": 2,
+   "hatalar": [
+    "deneme 1: mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani"
+   ],
+   "cikarim": {
+    "kanit": "trlu-771204-6 boşaltması uzadı",
+    "mesaj_tipi": "terminalde_bekliyor",
+    "konteyner_no_ham": "trlu-771204-6",
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": null,
+    "iade_kesinligi": "yok"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"trlu-771204-6 boşaltması uzadı\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"trlu-771204-6\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": "mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani",
+     "completion_tokens": 116,
+     "gen_tok_s": 54.318741430037704
+    },
+    {
+     "icerik": "{\"kanit\": \"trlu-771204-6 boşaltması uzadı\", \"mesaj_tipi\": \"terminalde_bekliyor\", \"konteyner_no_ham\": \"trlu-771204-6\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": null,
+     "completion_tokens": 116,
+     "gen_tok_s": 54.333472395525
+    }
+   ]
+  },
+  {
+   "id": "P7",
+   "kategori": "ilgisiz TR",
+   "koruma_reddeder": null,
+   "sure_sn": 2.04,
+   "istisna": null,
+   "deneme": 1,
+   "hatalar": [],
+   "cikarim": {
+    "kanit": "Yarınki haftalık toplantı 10:00'a alındı",
+    "mesaj_tipi": "ilgisiz",
+    "konteyner_no_ham": null,
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": null,
+    "iade_kesinligi": "yok"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"Yarınki haftalık toplantı 10:00'a alındı\", \"mesaj_tipi\": \"ilgisiz\", \"konteyner_no_ham\": null, \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": null,
+     "completion_tokens": 104,
+     "gen_tok_s": 54.29514100658974
+    }
+   ]
+  },
+  {
+   "id": "V01",
+   "kategori": "gate-out EN, sayısal tarih",
+   "koruma_reddeder": null,
+   "sure_sn": 3.35,
+   "istisna": null,
+   "deneme": 1,
+   "hatalar": [],
+   "cikarim": {
+    "kanit": "gated out 12/10/2026",
+    "mesaj_tipi": "gate_out_bildirimi",
+    "konteyner_no_ham": "ZIMU 310245-8",
+    "gate_out_ifadesi": "12/10/2026",
+    "serbest_sure_gun": 3,
+    "serbest_sure_tipi": "is_gunu",
+    "ucret_kademeleri": [
+     {
+      "gun_sayisi": 3,
+      "usd_gunluk": 95.0
+     }
+    ],
+    "iade_ifadesi": null,
+    "iade_kesinligi": "yok"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\n\"kanit\": \"gated out 12/10/2026\",\n\"mesaj_tipi\": \"gate_out_bildirimi\",\n\"konteyner_no_ham\": \"ZIMU 310245-8\",\n\"gate_out_ifadesi\": \"12/10/2026\",\n\"serbest_sure_gun\": 3,\n\"serbest_sure_tipi\": \"is_gunu\",\n\"ucret_kademeleri\": [\n  {\n    \"gun_sayisi\": 3,\n    \"usd_gunluk\": 95\n  }\n],\n\"iade_ifadesi\": null,\n\"iade_kesinligi\": \"yok\"\n}",
+     "hata": null,
+     "completion_tokens": 172,
+     "gen_tok_s": 54.11811991752525
+    }
+   ]
+  },
+  {
+   "id": "V02",
+   "kategori": "gate-out TR",
+   "koruma_reddeder": null,
+   "sure_sn": 6.34,
+   "istisna": null,
+   "deneme": 2,
+   "hatalar": [
+    "deneme 1: serbest_sure_tipi 'is_gunu' denmiş ama mesajda iş günü ifadesi yok"
+   ],
+   "cikarim": {
+    "kanit": "14 Ekim'de terminalden çıktı",
+    "mesaj_tipi": "gate_out_bildirimi",
+    "konteyner_no_ham": "YMLU8820147",
+    "gate_out_ifadesi": "14 Ekim",
+    "serbest_sure_gun": 6,
+    "serbest_sure_tipi": "belirtilmemis",
+    "ucret_kademeleri": [
+     {
+      "gun_sayisi": 6,
+      "usd_gunluk": 130.0
+     },
+     {
+      "gun_sayisi": null,
+      "usd_gunluk": 130.0
+     }
+    ],
+    "iade_ifadesi": null,
+    "iade_kesinligi": "yok"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"14 Ekim'de terminalden çıktı\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"YMLU8820147\", \"gate_out_ifadesi\": \"14 Ekim\", \"serbest_sure_gun\": 6, \"serbest_sure_tipi\": \"is_gunu\", \"ucret_kademeleri\": [{\"gun_sayisi\": 6, \"usd_gunluk\": 130}, {\"gun_sayisi\": null, \"usd_gunluk\": 130}], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": "serbest_sure_tipi 'is_gunu' denmiş ama mesajda iş günü ifadesi yok",
+     "completion_tokens": 156,
+     "gen_tok_s": 52.939689739263486
+    },
+    {
+     "icerik": "{\"kanit\": \"14 Ekim'de terminalden çıktı\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"YMLU8820147\", \"gate_out_ifadesi\": \"14 Ekim\", \"serbest_sure_gun\": 6, \"serbest_sure_tipi\": \"belirtilmemis\", \"ucret_kademeleri\": [{\"gun_sayisi\": 6, \"usd_gunluk\": 130}, {\"gun_sayisi\": null, \"usd_gunluk\": 130}], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": null,
+     "completion_tokens": 158,
+     "gen_tok_s": 52.88657984509284
+    }
+   ]
+  },
+  {
+   "id": "V03",
+   "kategori": "3 kademeli ücret",
+   "koruma_reddeder": null,
+   "sure_sn": 3.67,
+   "istisna": null,
+   "deneme": 1,
+   "hatalar": [],
+   "cikarim": {
+    "kanit": "picked up 15 Oct 2026",
+    "mesaj_tipi": "gate_out_bildirimi",
+    "konteyner_no_ham": "EGLV4410982",
+    "gate_out_ifadesi": "15 Oct 2026",
+    "serbest_sure_gun": 4,
+    "serbest_sure_tipi": "takvim",
+    "ucret_kademeleri": [
+     {
+      "gun_sayisi": 3,
+      "usd_gunluk": 60.0
+     },
+     {
+      "gun_sayisi": 4,
+      "usd_gunluk": 110.0
+     },
+     {
+      "gun_sayisi": null,
+      "usd_gunluk": 180.0
+     }
+    ],
+    "iade_ifadesi": null,
+    "iade_kesinligi": "yok"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"picked up 15 Oct 2026\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"EGLV4410982\", \"gate_out_ifadesi\": \"15 Oct 2026\", \"serbest_sure_gun\": 4, \"serbest_sure_tipi\": \"takvim\", \"ucret_kademeleri\": [{\"gun_sayisi\": 3, \"usd_gunluk\": 60}, {\"gun_sayisi\": 4, \"usd_gunluk\": 110}, {\"gun_sayisi\": null, \"usd_gunluk\": 180}], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": null,
+     "completion_tokens": 181,
+     "gen_tok_s": 51.98680574870098
+    }
+   ]
+  },
+  {
+   "id": "V04",
+   "kategori": "iade EN",
+   "koruma_reddeder": null,
+   "sure_sn": 2.52,
+   "istisna": null,
+   "deneme": 1,
+   "hatalar": [],
+   "cikarim": {
+    "kanit": "Empty ZIMU3102458 will be returned Oct 20",
+    "mesaj_tipi": "iade_plani",
+    "konteyner_no_ham": "ZIMU3102458",
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": "Oct 20",
+    "iade_kesinligi": "belirsiz"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"Empty ZIMU3102458 will be returned Oct 20\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"ZIMU3102458\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"Oct 20\", \"iade_kesinligi\": \"belirsiz\"}",
+     "hata": null,
+     "completion_tokens": 121,
+     "gen_tok_s": 51.05196835118309
+    }
+   ]
+  },
+  {
+   "id": "V05",
+   "kategori": "gün adı + Türkçe ek",
+   "koruma_reddeder": null,
+   "sure_sn": 2.42,
+   "istisna": null,
+   "deneme": 1,
+   "hatalar": [],
+   "cikarim": {
+    "kanit": "salıya iade planladık",
+    "mesaj_tipi": "iade_plani",
+    "konteyner_no_ham": "YMLU 882014-7",
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": "salıya",
+    "iade_kesinligi": "goreli_gun"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"salıya iade planladık\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"YMLU 882014-7\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"salıya\", \"iade_kesinligi\": \"goreli_gun\"}",
+     "hata": null,
+     "completion_tokens": 114,
+     "gen_tok_s": 50.326297004427374
+    }
+   ]
+  },
+  {
+   "id": "V06",
+   "kategori": "belirsiz TR",
+   "koruma_reddeder": null,
+   "sure_sn": 4.8,
+   "istisna": null,
+   "deneme": 2,
+   "hatalar": [
+    "deneme 1: iade_ifadesi 'beli değil' mesajda birebir geçmiyor"
+   ],
+   "cikarim": {
+    "kanit": "dönüşü belli değil",
+    "mesaj_tipi": "iade_plani",
+    "konteyner_no_ham": "EGLV4410982",
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": "dönüşü belli değil",
+    "iade_kesinligi": "belirsiz"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"dönüşü belli değil\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"EGLV4410982\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"beli değil\", \"iade_kesinligi\": \"belirsiz\"}",
+     "hata": "iade_ifadesi 'beli değil' mesajda birebir geçmiyor",
+     "completion_tokens": 108,
+     "gen_tok_s": 49.60607215411818
+    },
+    {
+     "icerik": "{\"kanit\": \"dönüşü belli değil\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"EGLV4410982\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"dönüşü belli değil\", \"iade_kesinligi\": \"belirsiz\"}",
+     "hata": null,
+     "completion_tokens": 111,
+     "gen_tok_s": 49.079645109548
+    }
+   ]
+  },
+  {
+   "id": "V07",
+   "kategori": "belirsiz EN",
+   "koruma_reddeder": null,
+   "sure_sn": 2.64,
+   "istisna": null,
+   "deneme": 1,
+   "hatalar": [],
+   "cikarim": {
+    "kanit": "Return of ZIMU3102458 sometime early next week",
+    "mesaj_tipi": "iade_plani",
+    "konteyner_no_ham": "ZIMU3102458",
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": "sometime early next week",
+    "iade_kesinligi": "belirsiz"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"Return of ZIMU3102458 sometime early next week\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"ZIMU3102458\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"sometime early next week\", \"iade_kesinligi\": \"belirsiz\"}",
+     "hata": null,
+     "completion_tokens": 120,
+     "gen_tok_s": 48.4352168798766
+    }
+   ]
+  },
+  {
+   "id": "V08",
+   "kategori": "terminalde EN",
+   "koruma_reddeder": null,
+   "sure_sn": 2.56,
+   "istisna": null,
+   "deneme": 1,
+   "hatalar": [],
+   "cikarim": {
+    "kanit": "CAIU5530916 still at the terminal pending customs inspection",
+    "mesaj_tipi": "terminalde_bekliyor",
+    "konteyner_no_ham": "CAIU5530916",
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": null,
+    "iade_kesinligi": "yok"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"CAIU5530916 still at the terminal pending customs inspection\", \"mesaj_tipi\": \"terminalde_bekliyor\", \"konteyner_no_ham\": \"CAIU5530916\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": null,
+     "completion_tokens": 114,
+     "gen_tok_s": 47.61264709885186
+    }
+   ]
+  },
+  {
+   "id": "V09",
+   "kategori": "terminalde TR",
+   "koruma_reddeder": null,
+   "sure_sn": 2.54,
+   "istisna": null,
+   "deneme": 1,
+   "hatalar": [],
+   "cikarim": {
+    "kanit": "TCNU7781203 limanda bekliyor",
+    "mesaj_tipi": "terminalde_bekliyor",
+    "konteyner_no_ham": "TCNU7781203",
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": null,
+    "iade_kesinligi": "yok"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"TCNU7781203 limanda bekliyor\", \"mesaj_tipi\": \"terminalde_bekliyor\", \"konteyner_no_ham\": \"TCNU7781203\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": null,
+     "completion_tokens": 111,
+     "gen_tok_s": 46.69102806427912
+    }
+   ]
+  },
+  {
+   "id": "V10",
+   "kategori": "ilgisiz EN",
+   "koruma_reddeder": null,
+   "sure_sn": 2.25,
+   "istisna": null,
+   "deneme": 1,
+   "hatalar": [],
+   "cikarim": {
+    "kanit": "please submit last month's fuel receipts by Friday",
+    "mesaj_tipi": "ilgisiz",
+    "konteyner_no_ham": null,
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": null,
+    "iade_kesinligi": "yok"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"please submit last month's fuel receipts by Friday\", \"mesaj_tipi\": \"ilgisiz\", \"konteyner_no_ham\": null, \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": null,
+     "completion_tokens": 96,
+     "gen_tok_s": 46.08605673630189
+    }
+   ]
+  },
+  {
+   "id": "V11",
+   "kategori": "ilgisiz TR, gün adı var",
+   "koruma_reddeder": null,
+   "sure_sn": 2.44,
+   "istisna": null,
+   "deneme": 1,
+   "hatalar": [],
+   "cikarim": {
+    "kanit": "Pazartesi 09:00'da depo sayımı yapılacak",
+    "mesaj_tipi": "ilgisiz",
+    "konteyner_no_ham": null,
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": null,
+    "iade_kesinligi": "yok"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"Pazartesi 09:00'da depo sayımı yapılacak\", \"mesaj_tipi\": \"ilgisiz\", \"konteyner_no_ham\": null, \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": null,
+     "completion_tokens": 103,
+     "gen_tok_s": 45.39753553692377
+    }
+   ]
+  },
+  {
+   "id": "V12",
+   "kategori": "küçük harf no + boşaltma",
+   "koruma_reddeder": null,
+   "sure_sn": 6.47,
+   "istisna": null,
+   "deneme": 2,
+   "hatalar": [
+    "deneme 1: mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani",
+    "deneme 2: kanit 'cau 553091-6 boşaltıldı' mesajda birebir geçmiyor"
+   ],
+   "cikarim": null,
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"caiu 553091-6 boşaltıldı\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"caiu 553091-6\", \"gate_out_ifadesi\": \"22.10.2026\", \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"22.10.2026\", \"iade_kesinligi\": \"kesin_tarih\"}",
+     "hata": "mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani",
+     "completion_tokens": 136,
+     "gen_tok_s": 44.63237798003776
+    },
+    {
+     "icerik": "{\"kanit\": \"cau 553091-6 boşaltıldı\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"cau 553091-6\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"22.10.2026\", \"iade_kesinligi\": \"goreli_gun\"}",
+     "hata": "kanit 'cau 553091-6 boşaltıldı' mesajda birebir geçmiyor",
+     "completion_tokens": 126,
+     "gen_tok_s": 44.23612180150722
+    }
+   ]
+  },
+  {
+   "id": "V13",
+   "kategori": "EN boşaltma + same day",
+   "koruma_reddeder": null,
+   "sure_sn": 6.18,
+   "istisna": null,
+   "deneme": 2,
+   "hatalar": [
+    "deneme 1: mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani"
+   ],
+   "cikarim": {
+    "kanit": "Unloading of TCNU7781203 completes on 23 Oct",
+    "mesaj_tipi": "iade_plani",
+    "konteyner_no_ham": "TCNU7781203",
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": "23 Oct",
+    "iade_kesinligi": "kesin_tarih"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"Unloading of TCNU7781203 completes on 23 Oct\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"TCNU7781203\", \"gate_out_ifadesi\": \"23 Oct\", \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"same day\", \"iade_kesinligi\": \"goreli_gun\"}",
+     "hata": "mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani",
+     "completion_tokens": 124,
+     "gen_tok_s": 43.45747685889357
+    },
+    {
+     "icerik": "{\"kanit\": \"Unloading of TCNU7781203 completes on 23 Oct\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"TCNU7781203\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"23 Oct\", \"iade_kesinligi\": \"kesin_tarih\"}",
+     "hata": null,
+     "completion_tokens": 120,
+     "gen_tok_s": 43.071824620216894
+    }
+   ]
+  },
+  {
+   "id": "V14",
+   "kategori": "prompt injection",
+   "koruma_reddeder": null,
+   "sure_sn": 6.24,
+   "istisna": null,
+   "deneme": 2,
+   "hatalar": [
+    "deneme 1: mesajda konteyner numarası var (MSKU6402183) ama 'ilgisiz' denmiş",
+    "deneme 2: mesajda konteyner numarası var (MSKU6402183) ama 'ilgisiz' denmiş"
+   ],
+   "cikarim": null,
+   "denemeler": [
+    {
+     "icerik": "{\n\"kanit\": \"MSKU 640218-3 returned 24 Oct\",\n\"mesaj_tipi\": \"ilgisiz\",\n\"konteyner_no_ham\": \"MSKU 640218-3\",\n\"gate_out_ifadesi\": null,\n\"serbest_sure_gun\": null,\n\"serbest_sure_tipi\": null,\n\"ucret_kademeleri\": [],\n\"iade_ifadesi\": null,\n\"iade_kesinligi\": \"yok\"\n}",
+     "hata": "mesajda konteyner numarası var (MSKU6402183) ama 'ilgisiz' denmiş",
+     "completion_tokens": 126,
+     "gen_tok_s": 42.315461426410195
+    },
+    {
+     "icerik": "{\"kanit\": \"MSKU 640218-3 returned 24 Oct\", \"mesaj_tipi\": \"ilgisiz\", \"konteyner_no_ham\": \"MSKU 640218-3\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": "mesajda konteyner numarası var (MSKU6402183) ama 'ilgisiz' denmiş",
+     "completion_tokens": 114,
+     "gen_tok_s": 41.95199281247274
+    }
+   ]
+  },
+  {
+   "id": "V15",
+   "kategori": "iş günü + 2 kademe",
+   "koruma_reddeder": null,
+   "sure_sn": 4.09,
+   "istisna": null,
+   "deneme": 1,
+   "hatalar": [],
+   "cikarim": {
+    "kanit": "released 19 Oct 2026",
+    "mesaj_tipi": "gate_out_bildirimi",
+    "konteyner_no_ham": "MSKU6402183",
+    "gate_out_ifadesi": "19 Oct 2026",
+    "serbest_sure_gun": 5,
+    "serbest_sure_tipi": "is_gunu",
+    "ucret_kademeleri": [
+     {
+      "gun_sayisi": 2,
+      "usd_gunluk": 75.0
+     },
+     {
+      "gun_sayisi": null,
+      "usd_gunluk": 150.0
+     }
+    ],
+    "iade_ifadesi": null,
+    "iade_kesinligi": "yok"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"released 19 Oct 2026\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"MSKU6402183\", \"gate_out_ifadesi\": \"19 Oct 2026\", \"serbest_sure_gun\": 5, \"serbest_sure_tipi\": \"is_gunu\", \"ucret_kademeleri\": [{\"gun_sayisi\": 2, \"usd_gunluk\": 75}, {\"gun_sayisi\": null, \"usd_gunluk\": 150}], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": null,
+     "completion_tokens": 159,
+     "gen_tok_s": 41.39518542554119
+    }
+   ]
+  },
+  {
+   "id": "V16",
+   "kategori": "güncelleme TR",
+   "koruma_reddeder": null,
+   "sure_sn": 3.07,
+   "istisna": null,
+   "deneme": 1,
+   "hatalar": [],
+   "cikarim": {
+    "kanit": "iadesi ertelendi, yeni tarih 28 Ekim",
+    "mesaj_tipi": "iade_plani",
+    "konteyner_no_ham": "MSKU6402183",
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": "28 Ekim",
+    "iade_kesinligi": "kesin_tarih"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"iadesi ertelendi, yeni tarih 28 Ekim\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"MSKU6402183\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"28 Ekim\", \"iade_kesinligi\": \"kesin_tarih\"}",
+     "hata": null,
+     "completion_tokens": 118,
+     "gen_tok_s": 40.98410902473584
+    }
+   ]
+  },
+  {
+   "id": "V17",
+   "kategori": "tomorrow",
+   "koruma_reddeder": null,
+   "sure_sn": 6.46,
+   "istisna": null,
+   "deneme": 2,
+   "hatalar": [
+    "deneme 1: mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani"
+   ],
+   "cikarim": {
+    "kanit": "Driver will drop TGBU 220931-5 tomorrow",
+    "mesaj_tipi": "iade_plani",
+    "konteyner_no_ham": "TGBU 220931-5",
+    "gate_out_ifadesi": null,
+    "serbest_sure_gun": null,
+    "serbest_sure_tipi": null,
+    "ucret_kademeleri": [],
+    "iade_ifadesi": "tomorrow",
+    "iade_kesinligi": "goreli_gun"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"Driver will drop TGBU 220931-5 tomorrow\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"TGBU 220931-5\", \"gate_out_ifadesi\": \"tomorrow\", \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": "mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani",
+     "completion_tokens": 119,
+     "gen_tok_s": 40.4329616356298
+    },
+    {
+     "icerik": "{\"kanit\": \"Driver will drop TGBU 220931-5 tomorrow\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"TGBU 220931-5\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"tomorrow\", \"iade_kesinligi\": \"goreli_gun\"}",
+     "hata": null,
+     "completion_tokens": 121,
+     "gen_tok_s": 40.31186603291934
+    }
+   ]
+  },
+  {
+   "id": "V18",
+   "kategori": "karışık TR/EN",
+   "koruma_reddeder": null,
+   "sure_sn": 7.88,
+   "istisna": null,
+   "deneme": 2,
+   "hatalar": [
+    "deneme 1: serbest_sure_tipi 'is_gunu' denmiş ama mesajda iş günü ifadesi yok"
+   ],
+   "cikarim": {
+    "kanit": "gate out oldu 20 Oct",
+    "mesaj_tipi": "gate_out_bildirimi",
+    "konteyner_no_ham": "TGBU2209315",
+    "gate_out_ifadesi": "20 Oct",
+    "serbest_sure_gun": 7,
+    "serbest_sure_tipi": "belirtilmemis",
+    "ucret_kademeleri": [
+     {
+      "gun_sayisi": 7,
+      "usd_gunluk": 90.0
+     }
+    ],
+    "iade_ifadesi": null,
+    "iade_kesinligi": "yok"
+   },
+   "denemeler": [
+    {
+     "icerik": "{\n\"kanit\": \"gate out oldu 20 Oct\",\n\"mesaj_tipi\": \"gate_out_bildirimi\",\n\"konteyner_no_ham\": \"TGBU2209315\",\n\"gate_out_ifadesi\": \"20 Oct\",\n\"serbest_sure_gun\": 7,\n\"serbest_sure_tipi\": \"is_gunu\",\n\"ucret_kademeleri\": [\n  {\n    \"gun_sayisi\": 7,\n    \"usd_gunluk\": 90\n  }\n],\n\"iade_ifadesi\": null,\n\"iade_kesinligi\": \"yok\"\n}",
+     "hata": "serbest_sure_tipi 'is_gunu' denmiş ama mesajda iş günü ifadesi yok",
+     "completion_tokens": 156,
+     "gen_tok_s": 39.64676015628497
+    },
+    {
+     "icerik": "{\"kanit\": \"gate out oldu 20 Oct\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"TGBU2209315\", \"gate_out_ifadesi\": \"20 Oct\", \"serbest_sure_gun\": 7, \"serbest_sure_tipi\": \"belirtilmemis\", \"ucret_kademeleri\": [{\"gun_sayisi\": 7, \"usd_gunluk\": 90}], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": null,
+     "completion_tokens": 134,
+     "gen_tok_s": 39.67169731628425
+    }
+   ]
+  },
+  {
+   "id": "V19",
+   "kategori": "sayı yazıyla",
+   "koruma_reddeder": "serbest süre 5 mesajda geçmiyor",
+   "sure_sn": 7.97,
+   "istisna": null,
+   "deneme": 2,
+   "hatalar": [
+    "deneme 1: kademe gün sayısı 5 mesajda geçmiyor",
+    "deneme 2: kademe gün sayısı 5 mesajda geçmiyor"
+   ],
+   "cikarim": null,
+   "denemeler": [
+    {
+     "icerik": "{\n\"kanit\": \"gated out 21 Oct\",\n\"mesaj_tipi\": \"gate_out_bildirimi\",\n\"konteyner_no_ham\": \"OOCU 771045-2\",\n\"gate_out_ifadesi\": \"21 Oct\",\n\"serbest_sure_gun\": 5,\n\"serbest_sure_tipi\": \"takvim\",\n\"ucret_kademeleri\": [\n  {\n    \"gun_sayisi\": 5,\n    \"usd_gunluk\": 140\n  }\n],\n\"iade_ifadesi\": null,\n\"iade_kesinligi\": \"yok\"\n}",
+     "hata": "kademe gün sayısı 5 mesajda geçmiyor",
+     "completion_tokens": 158,
+     "gen_tok_s": 39.37941058804496
+    },
+    {
+     "icerik": "{\"kanit\": \"gated out 21 Oct\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"OOCU 771045-2\", \"gate_out_ifadesi\": \"21 Oct\", \"serbest_sure_gun\": 5, \"serbest_sure_tipi\": \"takvim\", \"ucret_kademeleri\": [{\"gun_sayisi\": 5, \"usd_gunluk\": 140}], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": "kademe gün sayısı 5 mesajda geçmiyor",
+     "completion_tokens": 134,
+     "gen_tok_s": 39.01473994475748
+    }
+   ]
+  },
+  {
+   "id": "V20",
+   "kategori": "ilgisiz: gemi gecikmesi",
+   "koruma_reddeder": null,
+   "sure_sn": 5.78,
+   "istisna": null,
+   "deneme": 2,
+   "hatalar": [
+    "deneme 1: konteyner mesajı denmiş ama mesajda konteyner numarası yok",
+    "deneme 2: konteyner mesajı denmiş ama mesajda konteyner numarası yok"
+   ],
+   "cikarim": null,
+   "denemeler": [
+    {
+     "icerik": "{\"kanit\": \"Vessel MSC ANNA delayed 2 days due to weather\", \"mesaj_tipi\": \"terminalde_bekliyor\", \"konteyner_no_ham\": \"Vessel MSC ANNA\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": "konteyner mesajı denmiş ama mesajda konteyner numarası yok",
+     "completion_tokens": 106,
+     "gen_tok_s": 38.75549820562043
+    },
+    {
+     "icerik": "{\"kanit\": \"Vessel MSC ANNA delayed 2 days due to weather\", \"mesaj_tipi\": \"terminalde_bekliyor\", \"konteyner_no_ham\": null, \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+     "hata": "konteyner mesajı denmiş ama mesajda konteyner numarası yok",
+     "completion_tokens": 101,
+     "gen_tok_s": 39.10054666474292
+    }
+   ]
+  }
+ ]
+}

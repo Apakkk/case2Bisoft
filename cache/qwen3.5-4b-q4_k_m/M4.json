@@ -1,0 +1,76 @@
+{
+  "mesaj": {
+    "id": "M4",
+    "tarih": "2026-10-02",
+    "gonderen": "Sürücü",
+    "metin": "HLCU5520187 boşaltıldı, 6 Ekim'de iade ediyoruz."
+  },
+  "denemeler": [
+    {
+      "deneme": 1,
+      "icerik": "{\"kanit\": \"boşaltıldı\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"HLCU5520187\", \"gate_out_ifadesi\": \"6 Ekim'de\", \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"6 Ekim'de\", \"iade_kesinligi\": \"kesin_tarih\"}",
+      "reasoning": null,
+      "finish_reason": "stop",
+      "prompt_tokens": 1013,
+      "completion_tokens": 115,
+      "sure_sn": 6.140195624990156,
+      "timings": {
+        "cache_n": 948,
+        "prompt_n": 65,
+        "prompt_ms": 412.635,
+        "prompt_per_token_ms": 6.348230769230769,
+        "prompt_per_second": 157.52420419983764,
+        "predicted_n": 115,
+        "predicted_ms": 5713.485,
+        "predicted_per_token_ms": 50.11828947368421,
+        "predicted_per_second": 19.95279588552346
+      },
+      "hata": "mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released / left the terminal). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani"
+    },
+    {
+      "deneme": 2,
+      "icerik": "{\"kanit\": \"HLCU5520187 boşaltıldı, 6 Ekim'de iade ediyoruz\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"HLCU5520187\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"6 Ekim'de\", \"iade_kesinligi\": \"kesin_tarih\"}",
+      "reasoning": null,
+      "finish_reason": "stop",
+      "prompt_tokens": 1090,
+      "completion_tokens": 129,
+      "sure_sn": 7.419385624991264,
+      "timings": {
+        "cache_n": 948,
+        "prompt_n": 142,
+        "prompt_ms": 910.175,
+        "prompt_per_token_ms": 6.409683098591549,
+        "prompt_per_second": 156.01395336061748,
+        "predicted_n": 129,
+        "predicted_ms": 6501.854,
+        "predicted_per_token_ms": 50.795734375,
+        "predicted_per_second": 19.686692441878886
+      },
+      "hata": null
+    }
+  ],
+  "sonuc": {
+    "mesaj": {
+      "id": "M4",
+      "tarih": "2026-10-02",
+      "gonderen": "Sürücü",
+      "metin": "HLCU5520187 boşaltıldı, 6 Ekim'de iade ediyoruz."
+    },
+    "cikarim": {
+      "kanit": "HLCU5520187 boşaltıldı, 6 Ekim'de iade ediyoruz",
+      "mesaj_tipi": "iade_plani",
+      "konteyner_no_ham": "HLCU5520187",
+      "gate_out_ifadesi": null,
+      "serbest_sure_gun": null,
+      "serbest_sure_tipi": null,
+      "ucret_kademeleri": [],
+      "iade_ifadesi": "6 Ekim'de",
+      "iade_kesinligi": "kesin_tarih"
+    },
+    "hatalar": [
+      "deneme 1: mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released / left the terminal). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani"
+    ],
+    "deneme": 2,
+    "sure_sn": 13.56
+  }
+}

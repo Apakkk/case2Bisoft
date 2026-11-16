@@ -1,0 +1,53 @@
+{
+  "mesaj": {
+    "id": "M7",
+    "tarih": "2026-10-04",
+    "gonderen": "Sürücü",
+    "metin": "HLCU 552018-7'nin şasisi arızalandı, iade 12 Ekim'e kaldı."
+  },
+  "denemeler": [
+    {
+      "deneme": 1,
+      "icerik": "{\"kanit\": \"iade 12 Ekim'e kaldı\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"HLCU 552018-7\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"12 Ekim\", \"iade_kesinligi\": \"kesin_tarih\"}",
+      "reasoning": null,
+      "finish_reason": "stop",
+      "prompt_tokens": 1021,
+      "completion_tokens": 116,
+      "sure_sn": 6.8558750829834025,
+      "timings": {
+        "cache_n": 948,
+        "prompt_n": 73,
+        "prompt_ms": 572.222,
+        "prompt_per_token_ms": 7.838657534246575,
+        "prompt_per_second": 127.57286507684081,
+        "predicted_n": 116,
+        "predicted_ms": 6268.468,
+        "predicted_per_token_ms": 54.50841739130435,
+        "predicted_per_second": 18.345790390889768
+      },
+      "hata": null
+    }
+  ],
+  "sonuc": {
+    "mesaj": {
+      "id": "M7",
+      "tarih": "2026-10-04",
+      "gonderen": "Sürücü",
+      "metin": "HLCU 552018-7'nin şasisi arızalandı, iade 12 Ekim'e kaldı."
+    },
+    "cikarim": {
+      "kanit": "iade 12 Ekim'e kaldı",
+      "mesaj_tipi": "iade_plani",
+      "konteyner_no_ham": "HLCU 552018-7",
+      "gate_out_ifadesi": null,
+      "serbest_sure_gun": null,
+      "serbest_sure_tipi": null,
+      "ucret_kademeleri": [],
+      "iade_ifadesi": "12 Ekim",
+      "iade_kesinligi": "kesin_tarih"
+    },
+    "hatalar": [],
+    "deneme": 1,
+    "sure_sn": 6.86
+  }
+}

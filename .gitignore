@@ -1,0 +1,11 @@
+.venv/
+vendor/
+out/
+__pycache__/
+.pytest_cache/
+*.gguf
+models_bench/
+.claude/
+.DS_Store
+bench/results/*.log
+cache/*__ilk_calistirma/

@@ -1,0 +1,53 @@
+{
+  "mesaj": {
+    "id": "M13",
+    "tarih": "2026-10-05",
+    "gonderen": "Muhasebe",
+    "metin": "Eylül ayı faturaları sisteme yüklendi, kontrol edebilir misiniz?"
+  },
+  "denemeler": [
+    {
+      "deneme": 1,
+      "icerik": "{\"kanit\": \"Eylül ayı faturaları sisteme yüklendi\", \"mesaj_tipi\": \"ilgisiz\", \"konteyner_no_ham\": null, \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+      "reasoning": null,
+      "finish_reason": "stop",
+      "prompt_tokens": 1005,
+      "completion_tokens": 99,
+      "sure_sn": 8.487198874994647,
+      "timings": {
+        "cache_n": 948,
+        "prompt_n": 57,
+        "prompt_ms": 613.132,
+        "prompt_per_token_ms": 10.756701754385965,
+        "prompt_per_second": 92.96529947874195,
+        "predicted_n": 99,
+        "predicted_ms": 7836.907,
+        "predicted_per_token_ms": 79.96843877551021,
+        "predicted_per_second": 12.504933387623458
+      },
+      "hata": null
+    }
+  ],
+  "sonuc": {
+    "mesaj": {
+      "id": "M13",
+      "tarih": "2026-10-05",
+      "gonderen": "Muhasebe",
+      "metin": "Eylül ayı faturaları sisteme yüklendi, kontrol edebilir misiniz?"
+    },
+    "cikarim": {
+      "kanit": "Eylül ayı faturaları sisteme yüklendi",
+      "mesaj_tipi": "ilgisiz",
+      "konteyner_no_ham": null,
+      "gate_out_ifadesi": null,
+      "serbest_sure_gun": null,
+      "serbest_sure_tipi": null,
+      "ucret_kademeleri": [],
+      "iade_ifadesi": null,
+      "iade_kesinligi": "yok"
+    },
+    "hatalar": [],
+    "deneme": 1,
+    "sure_sn": 8.49
+  }
+}

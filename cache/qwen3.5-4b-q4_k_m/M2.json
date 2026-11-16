@@ -1,0 +1,58 @@
+{
+  "mesaj": {
+    "id": "M2",
+    "tarih": "2026-10-01",
+    "gonderen": "Hat şirketi",
+    "metin": "Container MAEU7731042 released and gated out on 01 Oct. Free time 4 business days. Detention rate USD 100 per day."
+  },
+  "denemeler": [
+    {
+      "deneme": 1,
+      "icerik": "{\"kanit\": \"released and gated out on 01 Oct\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"MAEU7731042\", \"gate_out_ifadesi\": \"01 Oct\", \"serbest_sure_gun\": 4, \"serbest_sure_tipi\": \"is_gunu\", \"ucret_kademeleri\": [{\"gun_sayisi\": null, \"usd_gunluk\": 100}], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+      "reasoning": null,
+      "finish_reason": "stop",
+      "prompt_tokens": 1026,
+      "completion_tokens": 133,
+      "sure_sn": 6.930057999998098,
+      "timings": {
+        "cache_n": 948,
+        "prompt_n": 78,
+        "prompt_ms": 526.51,
+        "prompt_per_token_ms": 6.750128205128205,
+        "prompt_per_second": 148.14533437161688,
+        "predicted_n": 133,
+        "predicted_ms": 6390.323,
+        "predicted_per_token_ms": 48.41153787878788,
+        "predicted_per_second": 20.65623286960612
+      },
+      "hata": null
+    }
+  ],
+  "sonuc": {
+    "mesaj": {
+      "id": "M2",
+      "tarih": "2026-10-01",
+      "gonderen": "Hat şirketi",
+      "metin": "Container MAEU7731042 released and gated out on 01 Oct. Free time 4 business days. Detention rate USD 100 per day."
+    },
+    "cikarim": {
+      "kanit": "released and gated out on 01 Oct",
+      "mesaj_tipi": "gate_out_bildirimi",
+      "konteyner_no_ham": "MAEU7731042",
+      "gate_out_ifadesi": "01 Oct",
+      "serbest_sure_gun": 4,
+      "serbest_sure_tipi": "is_gunu",
+      "ucret_kademeleri": [
+        {
+          "gun_sayisi": null,
+          "usd_gunluk": 100.0
+        }
+      ],
+      "iade_ifadesi": null,
+      "iade_kesinligi": "yok"
+    },
+    "hatalar": [],
+    "deneme": 1,
+    "sure_sn": 6.93
+  }
+}

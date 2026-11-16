@@ -1,0 +1,20 @@
+[project]
+name = "detention-risk"
+version = "0.1.0"
+description = "Dağınık operasyon mesajlarından konteyner bazında detention riski (lokal LLM + deterministik hesap)"
+requires-python = ">=3.11"
+dependencies = [
+    "openai>=1.40",
+    "pydantic>=2.7",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["live: llama-server açıkken gerçek modelle çalışan testler (-m live)"]
+addopts = "-m 'not live'"
+
+[tool.uv]
+package = false

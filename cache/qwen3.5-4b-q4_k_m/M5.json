@@ -1,0 +1,58 @@
+{
+  "mesaj": {
+    "id": "M5",
+    "tarih": "2026-10-02",
+    "gonderen": "Hat şirketi",
+    "metin": "CMAU3301986 picked up 02 Oct 2026. Free time 5 days (calendar). USD 175/day after free time."
+  },
+  "denemeler": [
+    {
+      "deneme": 1,
+      "icerik": "{\"kanit\": \"picked up 02 Oct 2026\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"CMAU3301986\", \"gate_out_ifadesi\": \"02 Oct 2026\", \"serbest_sure_gun\": 5, \"serbest_sure_tipi\": \"takvim\", \"ucret_kademeleri\": [{\"gun_sayisi\": null, \"usd_gunluk\": 175}], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+      "reasoning": null,
+      "finish_reason": "stop",
+      "prompt_tokens": 1028,
+      "completion_tokens": 140,
+      "sure_sn": 7.696581249998417,
+      "timings": {
+        "cache_n": 948,
+        "prompt_n": 80,
+        "prompt_ms": 577.054,
+        "prompt_per_token_ms": 7.213175,
+        "prompt_per_second": 138.6352057173159,
+        "predicted_n": 140,
+        "predicted_ms": 7107.147,
+        "predicted_per_token_ms": 51.13055395683453,
+        "predicted_per_second": 19.557777544210076
+      },
+      "hata": null
+    }
+  ],
+  "sonuc": {
+    "mesaj": {
+      "id": "M5",
+      "tarih": "2026-10-02",
+      "gonderen": "Hat şirketi",
+      "metin": "CMAU3301986 picked up 02 Oct 2026. Free time 5 days (calendar). USD 175/day after free time."
+    },
+    "cikarim": {
+      "kanit": "picked up 02 Oct 2026",
+      "mesaj_tipi": "gate_out_bildirimi",
+      "konteyner_no_ham": "CMAU3301986",
+      "gate_out_ifadesi": "02 Oct 2026",
+      "serbest_sure_gun": 5,
+      "serbest_sure_tipi": "takvim",
+      "ucret_kademeleri": [
+        {
+          "gun_sayisi": null,
+          "usd_gunluk": 175.0
+        }
+      ],
+      "iade_ifadesi": null,
+      "iade_kesinligi": "yok"
+    },
+    "hatalar": [],
+    "deneme": 1,
+    "sure_sn": 7.7
+  }
+}

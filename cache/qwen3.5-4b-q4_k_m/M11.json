@@ -1,0 +1,53 @@
+{
+  "mesaj": {
+    "id": "M11",
+    "tarih": "2026-10-05",
+    "gonderen": "Depo",
+    "metin": "CMAU3301986 için haftaya bir ara araç ayarlarız."
+  },
+  "denemeler": [
+    {
+      "deneme": 1,
+      "icerik": "{\"kanit\": \"haftaya bir ara araç ayarlarız\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"CMAU3301986\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"haftaya bir ara\", \"iade_kesinligi\": \"belirsiz\"}",
+      "reasoning": null,
+      "finish_reason": "stop",
+      "prompt_tokens": 1008,
+      "completion_tokens": 112,
+      "sure_sn": 9.50351083301939,
+      "timings": {
+        "cache_n": 948,
+        "prompt_n": 60,
+        "prompt_ms": 667.853,
+        "prompt_per_token_ms": 11.130883333333333,
+        "prompt_per_second": 89.84012948957331,
+        "predicted_n": 112,
+        "predicted_ms": 8788.956,
+        "predicted_per_token_ms": 79.17978378378379,
+        "predicted_per_second": 12.629486369029495
+      },
+      "hata": null
+    }
+  ],
+  "sonuc": {
+    "mesaj": {
+      "id": "M11",
+      "tarih": "2026-10-05",
+      "gonderen": "Depo",
+      "metin": "CMAU3301986 için haftaya bir ara araç ayarlarız."
+    },
+    "cikarim": {
+      "kanit": "haftaya bir ara araç ayarlarız",
+      "mesaj_tipi": "iade_plani",
+      "konteyner_no_ham": "CMAU3301986",
+      "gate_out_ifadesi": null,
+      "serbest_sure_gun": null,
+      "serbest_sure_tipi": null,
+      "ucret_kademeleri": [],
+      "iade_ifadesi": "haftaya bir ara",
+      "iade_kesinligi": "belirsiz"
+    },
+    "hatalar": [],
+    "deneme": 1,
+    "sure_sn": 9.5
+  }
+}

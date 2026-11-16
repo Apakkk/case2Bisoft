@@ -1,0 +1,62 @@
+{
+  "mesaj": {
+    "id": "M3",
+    "tarih": "2026-09-30",
+    "gonderen": "Hat şirketi",
+    "metin": "HLCU5520187 gate-out 30/09/2026. 7 days free. Detention: first 3 days USD 120/day, thereafter USD 200/day."
+  },
+  "denemeler": [
+    {
+      "deneme": 1,
+      "icerik": "{\"kanit\": \"gate-out 30/09/2026\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"HLCU5520187\", \"gate_out_ifadesi\": \"30/09/2026\", \"serbest_sure_gun\": 7, \"serbest_sure_tipi\": \"belirtilmemis\", \"ucret_kademeleri\": [{\"gun_sayisi\": 3, \"usd_gunluk\": 120}, {\"gun_sayisi\": null, \"usd_gunluk\": 200}], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+      "reasoning": null,
+      "finish_reason": "stop",
+      "prompt_tokens": 1039,
+      "completion_tokens": 168,
+      "sure_sn": 8.759496958984528,
+      "timings": {
+        "cache_n": 948,
+        "prompt_n": 91,
+        "prompt_ms": 548.661,
+        "prompt_per_token_ms": 6.029241758241757,
+        "prompt_per_second": 165.85833511038695,
+        "predicted_n": 168,
+        "predicted_ms": 8195.33,
+        "predicted_per_token_ms": 49.07383233532934,
+        "predicted_per_second": 20.377458869868573
+      },
+      "hata": null
+    }
+  ],
+  "sonuc": {
+    "mesaj": {
+      "id": "M3",
+      "tarih": "2026-09-30",
+      "gonderen": "Hat şirketi",
+      "metin": "HLCU5520187 gate-out 30/09/2026. 7 days free. Detention: first 3 days USD 120/day, thereafter USD 200/day."
+    },
+    "cikarim": {
+      "kanit": "gate-out 30/09/2026",
+      "mesaj_tipi": "gate_out_bildirimi",
+      "konteyner_no_ham": "HLCU5520187",
+      "gate_out_ifadesi": "30/09/2026",
+      "serbest_sure_gun": 7,
+      "serbest_sure_tipi": "belirtilmemis",
+      "ucret_kademeleri": [
+        {
+          "gun_sayisi": 3,
+          "usd_gunluk": 120.0
+        },
+        {
+          "gun_sayisi": null,
+          "usd_gunluk": 200.0
+        }
+      ],
+      "iade_ifadesi": null,
+      "iade_kesinligi": "yok"
+    },
+    "hatalar": [],
+    "deneme": 1,
+    "sure_sn": 8.76
+  }
+}

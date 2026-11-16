@@ -1,0 +1,58 @@
+{
+  "mesaj": {
+    "id": "M1",
+    "tarih": "2026-09-28",
+    "gonderen": "Hat şirketi",
+    "metin": "Arrival notice: Container MSCU4829153 gated out 28 Sep 2026. Free time: 5 calendar days. Detention: USD 150/day."
+  },
+  "denemeler": [
+    {
+      "deneme": 1,
+      "icerik": "{\"kanit\": \"gated out 28 Sep 2026\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"MSCU4829153\", \"gate_out_ifadesi\": \"28 Sep 2026\", \"serbest_sure_gun\": 5, \"serbest_sure_tipi\": \"takvim\", \"ucret_kademeleri\": [{\"gun_sayisi\": null, \"usd_gunluk\": 150}], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+      "reasoning": null,
+      "finish_reason": "stop",
+      "prompt_tokens": 1031,
+      "completion_tokens": 140,
+      "sure_sn": 6.768285625003045,
+      "timings": {
+        "cache_n": 948,
+        "prompt_n": 83,
+        "prompt_ms": 446.315,
+        "prompt_per_token_ms": 5.377289156626506,
+        "prompt_per_second": 185.9673100836853,
+        "predicted_n": 140,
+        "predicted_ms": 6277.447,
+        "predicted_per_token_ms": 45.16148920863309,
+        "predicted_per_second": 22.142759628237403
+      },
+      "hata": null
+    }
+  ],
+  "sonuc": {
+    "mesaj": {
+      "id": "M1",
+      "tarih": "2026-09-28",
+      "gonderen": "Hat şirketi",
+      "metin": "Arrival notice: Container MSCU4829153 gated out 28 Sep 2026. Free time: 5 calendar days. Detention: USD 150/day."
+    },
+    "cikarim": {
+      "kanit": "gated out 28 Sep 2026",
+      "mesaj_tipi": "gate_out_bildirimi",
+      "konteyner_no_ham": "MSCU4829153",
+      "gate_out_ifadesi": "28 Sep 2026",
+      "serbest_sure_gun": 5,
+      "serbest_sure_tipi": "takvim",
+      "ucret_kademeleri": [
+        {
+          "gun_sayisi": null,
+          "usd_gunluk": 150.0
+        }
+      ],
+      "iade_ifadesi": null,
+      "iade_kesinligi": "yok"
+    },
+    "hatalar": [],
+    "deneme": 1,
+    "sure_sn": 6.77
+  }
+}

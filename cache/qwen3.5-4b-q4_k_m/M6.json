@@ -1,0 +1,58 @@
+{
+  "mesaj": {
+    "id": "M6",
+    "tarih": "2026-10-03",
+    "gonderen": "Hat şirketi",
+    "metin": "TGHU9004512 gated out 3 Oct. 10 free days. USD 100/day."
+  },
+  "denemeler": [
+    {
+      "deneme": 1,
+      "icerik": "{\"kanit\": \"gated out 3 Oct\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"TGHU9004512\", \"gate_out_ifadesi\": \"3 Oct\", \"serbest_sure_gun\": 10, \"serbest_sure_tipi\": \"belirtilmemis\", \"ucret_kademeleri\": [{\"gun_sayisi\": null, \"usd_gunluk\": 100}], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+      "reasoning": null,
+      "finish_reason": "stop",
+      "prompt_tokens": 1017,
+      "completion_tokens": 133,
+      "sure_sn": 7.275530457991408,
+      "timings": {
+        "cache_n": 948,
+        "prompt_n": 69,
+        "prompt_ms": 560.321,
+        "prompt_per_token_ms": 8.120594202898552,
+        "prompt_per_second": 123.14369798740364,
+        "predicted_n": 133,
+        "predicted_ms": 6700.682,
+        "predicted_per_token_ms": 50.762742424242425,
+        "predicted_per_second": 19.69948730591901
+      },
+      "hata": null
+    }
+  ],
+  "sonuc": {
+    "mesaj": {
+      "id": "M6",
+      "tarih": "2026-10-03",
+      "gonderen": "Hat şirketi",
+      "metin": "TGHU9004512 gated out 3 Oct. 10 free days. USD 100/day."
+    },
+    "cikarim": {
+      "kanit": "gated out 3 Oct",
+      "mesaj_tipi": "gate_out_bildirimi",
+      "konteyner_no_ham": "TGHU9004512",
+      "gate_out_ifadesi": "3 Oct",
+      "serbest_sure_gun": 10,
+      "serbest_sure_tipi": "belirtilmemis",
+      "ucret_kademeleri": [
+        {
+          "gun_sayisi": null,
+          "usd_gunluk": 100.0
+        }
+      ],
+      "iade_ifadesi": null,
+      "iade_kesinligi": "yok"
+    },
+    "hatalar": [],
+    "deneme": 1,
+    "sure_sn": 7.28
+  }
+}

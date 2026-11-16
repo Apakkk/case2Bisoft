@@ -1,0 +1,53 @@
+{
+  "mesaj": {
+    "id": "M12",
+    "tarih": "2026-10-05",
+    "gonderen": "Gümrük müşaviri",
+    "metin": "OOLU6612408 hâlâ terminalde, gümrük onayı bekleniyor."
+  },
+  "denemeler": [
+    {
+      "deneme": 1,
+      "icerik": "{\"kanit\": \"hâlâ terminalde, gümrük onayı bekleniyor\", \"mesaj_tipi\": \"terminalde_bekliyor\", \"konteyner_no_ham\": \"OOLU6612408\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": null, \"iade_kesinligi\": \"yok\"}",
+      "reasoning": null,
+      "finish_reason": "stop",
+      "prompt_tokens": 1016,
+      "completion_tokens": 113,
+      "sure_sn": 8.407538583996939,
+      "timings": {
+        "cache_n": 948,
+        "prompt_n": 68,
+        "prompt_ms": 571.958,
+        "prompt_per_token_ms": 8.411147058823529,
+        "prompt_per_second": 118.8898485553135,
+        "predicted_n": 113,
+        "predicted_ms": 7804.601,
+        "predicted_per_token_ms": 69.6839375,
+        "predicted_per_second": 14.350509398238295
+      },
+      "hata": null
+    }
+  ],
+  "sonuc": {
+    "mesaj": {
+      "id": "M12",
+      "tarih": "2026-10-05",
+      "gonderen": "Gümrük müşaviri",
+      "metin": "OOLU6612408 hâlâ terminalde, gümrük onayı bekleniyor."
+    },
+    "cikarim": {
+      "kanit": "hâlâ terminalde, gümrük onayı bekleniyor",
+      "mesaj_tipi": "terminalde_bekliyor",
+      "konteyner_no_ham": "OOLU6612408",
+      "gate_out_ifadesi": null,
+      "serbest_sure_gun": null,
+      "serbest_sure_tipi": null,
+      "ucret_kademeleri": [],
+      "iade_ifadesi": null,
+      "iade_kesinligi": "yok"
+    },
+    "hatalar": [],
+    "deneme": 1,
+    "sure_sn": 8.41
+  }
+}

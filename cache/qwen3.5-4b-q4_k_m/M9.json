@@ -1,0 +1,53 @@
+{
+  "mesaj": {
+    "id": "M9",
+    "tarih": "2026-10-05",
+    "gonderen": "Sürücü",
+    "metin": "MSCU 482915-3 perşembe iade ediyoruz."
+  },
+  "denemeler": [
+    {
+      "deneme": 1,
+      "icerik": "{\"kanit\": \"perşembe iade ediyoruz\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"MSCU 482915-3\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"perşembe\", \"iade_kesinligi\": \"goreli_gun\"}",
+      "reasoning": null,
+      "finish_reason": "stop",
+      "prompt_tokens": 1007,
+      "completion_tokens": 112,
+      "sure_sn": 9.934709458000725,
+      "timings": {
+        "cache_n": 948,
+        "prompt_n": 59,
+        "prompt_ms": 606.256,
+        "prompt_per_token_ms": 10.275525423728814,
+        "prompt_per_second": 97.31862447546911,
+        "predicted_n": 112,
+        "predicted_ms": 9315.064,
+        "predicted_per_token_ms": 83.9194954954955,
+        "predicted_per_second": 11.916182218393775
+      },
+      "hata": null
+    }
+  ],
+  "sonuc": {
+    "mesaj": {
+      "id": "M9",
+      "tarih": "2026-10-05",
+      "gonderen": "Sürücü",
+      "metin": "MSCU 482915-3 perşembe iade ediyoruz."
+    },
+    "cikarim": {
+      "kanit": "perşembe iade ediyoruz",
+      "mesaj_tipi": "iade_plani",
+      "konteyner_no_ham": "MSCU 482915-3",
+      "gate_out_ifadesi": null,
+      "serbest_sure_gun": null,
+      "serbest_sure_tipi": null,
+      "ucret_kademeleri": [],
+      "iade_ifadesi": "perşembe",
+      "iade_kesinligi": "goreli_gun"
+    },
+    "hatalar": [],
+    "deneme": 1,
+    "sure_sn": 9.93
+  }
+}

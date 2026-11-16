@@ -1,0 +1,76 @@
+{
+  "mesaj": {
+    "id": "M10",
+    "tarih": "2026-10-05",
+    "gonderen": "Depo",
+    "metin": "MAEU7731042 boşaltması 9 Ekim Cuma bitecek, aynı gün iade."
+  },
+  "denemeler": [
+    {
+      "deneme": 1,
+      "icerik": "{\"kanit\": \"boşaltması 9 Ekim Cuma bitecek, aynı gün iade\", \"mesaj_tipi\": \"gate_out_bildirimi\", \"konteyner_no_ham\": \"MAEU7731042\", \"gate_out_ifadesi\": \"9 Ekim\", \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"aynı gün\", \"iade_kesinligi\": \"goreli_gun\"}",
+      "reasoning": null,
+      "finish_reason": "stop",
+      "prompt_tokens": 1012,
+      "completion_tokens": 124,
+      "sure_sn": 12.641840249998495,
+      "timings": {
+        "cache_n": 948,
+        "prompt_n": 64,
+        "prompt_ms": 655.427,
+        "prompt_per_token_ms": 10.241046875,
+        "prompt_per_second": 97.64626724257622,
+        "predicted_n": 124,
+        "predicted_ms": 11965.037,
+        "predicted_per_token_ms": 97.27672357723577,
+        "predicted_per_second": 10.27995149534431
+      },
+      "hata": "mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released / left the terminal). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani"
+    },
+    {
+      "deneme": 2,
+      "icerik": "{\"kanit\": \"boşaltması 9 Ekim Cuma bitecek, aynı gün iade\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"MAEU7731042\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"aynı gün\", \"iade_kesinligi\": \"goreli_gun\"}",
+      "reasoning": null,
+      "finish_reason": "stop",
+      "prompt_tokens": 1089,
+      "completion_tokens": 120,
+      "sure_sn": 13.664842666999903,
+      "timings": {
+        "cache_n": 948,
+        "prompt_n": 141,
+        "prompt_ms": 1498.32,
+        "prompt_per_token_ms": 10.626382978723404,
+        "prompt_per_second": 94.10539804581133,
+        "predicted_n": 120,
+        "predicted_ms": 12085.907,
+        "predicted_per_token_ms": 101.56224369747899,
+        "predicted_per_second": 9.846178693911844
+      },
+      "hata": null
+    }
+  ],
+  "sonuc": {
+    "mesaj": {
+      "id": "M10",
+      "tarih": "2026-10-05",
+      "gonderen": "Depo",
+      "metin": "MAEU7731042 boşaltması 9 Ekim Cuma bitecek, aynı gün iade."
+    },
+    "cikarim": {
+      "kanit": "boşaltması 9 Ekim Cuma bitecek, aynı gün iade",
+      "mesaj_tipi": "iade_plani",
+      "konteyner_no_ham": "MAEU7731042",
+      "gate_out_ifadesi": null,
+      "serbest_sure_gun": null,
+      "serbest_sure_tipi": null,
+      "ucret_kademeleri": [],
+      "iade_ifadesi": "aynı gün",
+      "iade_kesinligi": "goreli_gun"
+    },
+    "hatalar": [
+      "deneme 1: mesaj_tipi 'gate_out_bildirimi' denmiş ama mesajda gate-out ifadesi yok (gated out / picked up / released / left the terminal). Unloading (boşaltma) is not gate-out; a message about returning the container is iade_plani"
+    ],
+    "deneme": 2,
+    "sure_sn": 26.31
+  }
+}

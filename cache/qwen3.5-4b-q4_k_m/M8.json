@@ -1,0 +1,53 @@
+{
+  "mesaj": {
+    "id": "M8",
+    "tarih": "2026-10-04",
+    "gonderen": "Depo",
+    "metin": "TGHU9004512 boşaltma bitti, 8 Ekim'de iade planlandı."
+  },
+  "denemeler": [
+    {
+      "deneme": 1,
+      "icerik": "{\"kanit\": \"boşaltma bitti, 8 Ekim'de iade planlandı\", \"mesaj_tipi\": \"iade_plani\", \"konteyner_no_ham\": \"TGHU9004512\", \"gate_out_ifadesi\": null, \"serbest_sure_gun\": null, \"serbest_sure_tipi\": null, \"ucret_kademeleri\": [], \"iade_ifadesi\": \"8 Ekim'de\", \"iade_kesinligi\": \"kesin_tarih\"}",
+      "reasoning": null,
+      "finish_reason": "stop",
+      "prompt_tokens": 1014,
+      "completion_tokens": 122,
+      "sure_sn": 10.000184292002814,
+      "timings": {
+        "cache_n": 948,
+        "prompt_n": 66,
+        "prompt_ms": 622.636,
+        "prompt_per_token_ms": 9.433878787878788,
+        "prompt_per_second": 106.00093794769336,
+        "predicted_n": 122,
+        "predicted_ms": 9340.74,
+        "predicted_per_token_ms": 77.19619834710744,
+        "predicted_per_second": 12.954005785408865
+      },
+      "hata": null
+    }
+  ],
+  "sonuc": {
+    "mesaj": {
+      "id": "M8",
+      "tarih": "2026-10-04",
+      "gonderen": "Depo",
+      "metin": "TGHU9004512 boşaltma bitti, 8 Ekim'de iade planlandı."
+    },
+    "cikarim": {
+      "kanit": "boşaltma bitti, 8 Ekim'de iade planlandı",
+      "mesaj_tipi": "iade_plani",
+      "konteyner_no_ham": "TGHU9004512",
+      "gate_out_ifadesi": null,
+      "serbest_sure_gun": null,
+      "serbest_sure_tipi": null,
+      "ucret_kademeleri": [],
+      "iade_ifadesi": "8 Ekim'de",
+      "iade_kesinligi": "kesin_tarih"
+    },
+    "hatalar": [],
+    "deneme": 1,
+    "sure_sn": 10.0
+  }
+}
